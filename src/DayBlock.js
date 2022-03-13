@@ -220,11 +220,16 @@ function DayBlock() {
     const [mins, setMinutes] = React.useState(0);
     const [color, setColor] = React.useState("#ff0000");
     const [blocks, setBlocks] = React.useState([]);
+    const [currNum, setCurrNum] = React.useState(new Date().getHours());
 
-    const currNum = new Date().getHours();
-
+    React.useEffect(() => {
+        const interval = setInterval(() => setCurrNum(new Date().getHours()), 10000);
+        return () => {
+            clearInterval(interval);
+        }
+    }, []);
+    
     for (let i = 0; i < hours.length; i++) {
-
         times.push(
             [<Grid item xs={11} style={{height: "40px"}}>
                 <Typography variant="h7" style={{color: "#eeeeee"}}>{hours[i].time}</Typography>
