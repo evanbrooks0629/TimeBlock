@@ -5,7 +5,7 @@ import Draggable from 'react-draggable';
 import { ColorPicker } from 'mui-color';
 
 function TimeBlock(props) {
-    let height = props.duration*42 + Math.ceil(1.2*(props.duration-1)+Math.floor(props.duration)-0.5);
+    let height = props.duration*42 + Math.ceil(1.2*(props.duration-1)+Math.floor(props.duration)-1);
     const heightPixels = String(height) + "px";
 
     let lineHeight = height - 2;
@@ -14,8 +14,24 @@ function TimeBlock(props) {
     const [visibilityProp, setVisibilityProp] = React.useState("");
     const [strikethrough, setStrikethrough] = React.useState("");
 
-    const handleDelete = () => {
+    /*
+    Algorithm for determining starting and ending height based on other blocks
+
+    // for block in blocks
+    //      # here, duration is the duration of the block
+    //      height -= props.duration*42 + Math.ceil(1.2*props.duration-1)+Math.floor(props.duration)-0.5)
+    //      height -= 1 (1px of spacing)
+    // yPos = height + 1 // 1 for the extra pixel on top
+    // we subtract the values because right now, the yPos gets shifted down but it needs to be shifted UP
+    // onDrag, save new position in state
+
+    // currently the default position for the yPos for every block is 1, since it is relative to other blocks
+    // we need to calculate the position after drag and account for previous blocks. 
+    */
+
+    const handleDelete = name => {
         setVisibilityProp("hidden");
+        props.handleDelete(name);
     }
 
     const handleClick = e => {
@@ -23,7 +39,7 @@ function TimeBlock(props) {
             case 1:
                 break;
             case 2:
-                // 30 character limit
+                // double click
                 strikethrough === "" ?
                 setStrikethrough("line-through") : setStrikethrough("");
                 break;
@@ -38,20 +54,24 @@ function TimeBlock(props) {
         <Draggable
             axis= 'y'
             grid={[11,11]}
+            bounds={{
+                top: 0,
+                bottom: 748
+            }}
             defaultPosition={{
                 x: 0,
-                y: 1
+                y: 0
             }}
         >
-            <Grid container style={{marginLeft: "8.2%", width: "91.8%", height: heightPixels, backgroundColor: props.color, visibility: visibilityProp, textDecorationColor: "#ffffff"}} onClick={handleClick}>
-                <Grid item xs={6} sm={7} md={8} lg={9} align="left" style={{lineHeight: lineHeightPixels}}>
+            <Grid container style={{position: "absolute", marginLeft: "2.95%", width: "31.58%", height: heightPixels, backgroundColor: props.color, visibility: visibilityProp, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+                <Grid item xs={6} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: strikethrough, textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
-                <Grid item xs={4} sm={3} md={2} lg={1} align="right" style={{lineHeight: lineHeightPixels}}>
+                <Grid item xs={4} sm={3} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingRight: "10px", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <Typography variant="h7" onClick={(e) => handleDelete()} style={{color: "white", paddingRight: "10px"}}>&#10006;</Typography>
+                    <Typography variant="h7" onClick={() => handleDelete(props.name)} style={{color: "white", paddingRight: "10px"}}>&#10006;</Typography>
                 </Grid>
             </Grid>
         </Draggable>
@@ -138,7 +158,6 @@ function DayBlock() {
             num: 0
         }, 
     ];
-
     const hoursInputs = [
         {
             value: 0,
@@ -307,9 +326,7 @@ function DayBlock() {
             hours: hrs,
             minutes: mins,
             duration: duration,
-            color: color,
-            xPos: 0,
-            yPos: 1
+            color: color
         }
         blocks.push(newBlock);
         setBlocks(blocks);
@@ -319,6 +336,11 @@ function DayBlock() {
         setHours(1);
         setMinutes(0);
         setColor("#ff0000");
+    }
+
+    const handleDelete = name => {
+        console.log(name + " block deleted");
+        //setBlocks(blocks.filter(block => block.name !== name));
     }
 
     return (
@@ -340,11 +362,11 @@ function DayBlock() {
                             // box for drop area of timeslots
                         }
                         {items}
-                        <Grid item xs={12} style={{marginTop: "-793px"}}>
-                            <div style={{height: '1px'}}></div>
-                            {blocks.map(newBlock => (
-                                [<TimeBlock name={newBlock.name} hours={newBlock.hours} coords={[newBlock.xPos, newBlock.yPos]} minutes={newBlock.minutes} duration={newBlock.duration} color={newBlock.color} />,
-                                    <div style={{height: '1px'}}></div>]
+                        <Grid item xs={12} style={{marginTop: "-793px"}} className="offsetParent">
+                            <div style={{height: '2px'}}></div>
+                            {
+                            blocks.map(newBlock => (
+                                <TimeBlock name={newBlock.name} hours={newBlock.hours} coords={[newBlock.xPos, newBlock.yPos]} minutes={newBlock.minutes} duration={newBlock.duration} color={newBlock.color} handleDelete={handleDelete} />    
                             ))}
                         </Grid>
                     </Grid>
@@ -461,5 +483,5 @@ function DayBlock() {
     );
 }
   
-  export default DayBlock;
+export default DayBlock;
   

@@ -115,7 +115,7 @@ function App() {
         <Grid item xs={6} sm={6} md={6} lg={6}>
           <Typography align="right" variant="h6" style={{paddingRight: "45px", color: "#666666"}}>{weekday}, {month} {day}{ending}</Typography>
         </Grid>
-        <Grid item xs={12} stlye={{height: "10px"}} />
+        <Grid item xs={12} />
         <DayBlock />
       </Grid>
       
