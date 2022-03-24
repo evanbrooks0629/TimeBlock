@@ -11,26 +11,10 @@ function TimeBlock(props) {
     let lineHeight = height - 2;
     const lineHeightPixels = String(lineHeight) + "px";
 
-    const [visibilityProp, setVisibilityProp] = React.useState("");
     const [strikethrough, setStrikethrough] = React.useState("");
-
-    /*
-    Algorithm for determining starting and ending height based on other blocks
-
-    // for block in blocks
-    //      # here, duration is the duration of the block
-    //      height -= props.duration*42 + Math.ceil(1.2*props.duration-1)+Math.floor(props.duration)-0.5)
-    //      height -= 1 (1px of spacing)
-    // yPos = height + 1 // 1 for the extra pixel on top
-    // we subtract the values because right now, the yPos gets shifted down but it needs to be shifted UP
-    // onDrag, save new position in state
-
-    // currently the default position for the yPos for every block is 1, since it is relative to other blocks
-    // we need to calculate the position after drag and account for previous blocks. 
-    */
+    const [yPos, setYPos] = React.useState(props.yPos);
 
     const handleDelete = name => {
-        setVisibilityProp("hidden");
         props.handleDelete(name);
     }
 
@@ -50,6 +34,18 @@ function TimeBlock(props) {
         }
     }
 
+    const handleDrag = (e,ui) => {
+        //console.log(yPos + ui.deltaY);
+        setYPos(yPos + ui.deltaY);
+        let y;
+        if (ui.deltaY > 0) {
+            y = 11;
+        } else {
+            y= -11;
+        }
+        props.updateCoords(props.name, yPos + y);
+    }
+
     return (
         <Draggable
             axis= 'y'
@@ -58,12 +54,13 @@ function TimeBlock(props) {
                 top: 0,
                 bottom: 748
             }}
-            defaultPosition={{
+            defaultPosition={{ 
                 x: 0,
-                y: 0
+                y: yPos
             }}
+            onDrag={handleDrag}
         >
-            <Grid container style={{position: "absolute", marginLeft: "2.95%", width: "31.58%", height: heightPixels, backgroundColor: props.color, visibility: visibilityProp, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+            <Grid container style={{position: "absolute", marginLeft: "2.95%", width: "31.58%", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
                 <Grid item xs={6} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: strikethrough, textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
@@ -238,7 +235,7 @@ function DayBlock() {
     const [hrs, setHours] = React.useState(1);
     const [mins, setMinutes] = React.useState(0);
     const [color, setColor] = React.useState("#ff0000");
-    const [blocks, setBlocks] = React.useState([]);
+    const [blocks, setBlocks] = React.useState(JSON.parse(localStorage.getItem("blocks")));
     const [currNum, setCurrNum] = React.useState(new Date().getHours());
 
     React.useEffect(() => {
@@ -287,6 +284,10 @@ function DayBlock() {
         <Grid item xs={12} style={{height: "12px"}}></Grid>
     );
 
+    const writeFile = newBlocks => {
+        localStorage.setItem("blocks", JSON.stringify(newBlocks));
+    }
+
     const handleClickOpen = () => {
         setOpen(true);
     }
@@ -326,10 +327,12 @@ function DayBlock() {
             hours: hrs,
             minutes: mins,
             duration: duration,
-            color: color
+            color: color,
+            yPos: 0
         }
         blocks.push(newBlock);
         setBlocks(blocks);
+        writeFile(blocks);
 
         // reset dialog states
         setName("");
@@ -338,9 +341,23 @@ function DayBlock() {
         setColor("#ff0000");
     }
 
+    const updateCoords = (name, newYPos) => {
+        let newBlocks = [];
+        for (let i = 0; i < blocks.length; i++) {
+            let newBlock = blocks[i];
+            if (newBlock.name === name) {
+                newBlock.yPos = newYPos;
+            }
+            newBlocks.push(newBlock);
+        }
+        setBlocks(newBlocks);
+        writeFile(newBlocks);
+    }
+
     const handleDelete = name => {
-        console.log(name + " block deleted");
-        //setBlocks(blocks.filter(block => block.name !== name));
+        const newBlocks = blocks.filter(block => block.name !== name);
+        setBlocks(newBlocks);
+        writeFile(newBlocks);
     }
 
     return (
@@ -350,23 +367,19 @@ function DayBlock() {
             <Grid container spacing={0}>
                 <Grid item xs={2}>
                     <Grid container>
-                        {
-                            // box to the left with the times of day
-                        }
                         {times}
                     </Grid>
                 </Grid>
                 <Grid item xs={10}>
                     <Grid container>
-                        {
-                            // box for drop area of timeslots
-                        }
                         {items}
                         <Grid item xs={12} style={{marginTop: "-793px"}} className="offsetParent">
                             <div style={{height: '2px'}}></div>
                             {
                             blocks.map(newBlock => (
-                                <TimeBlock name={newBlock.name} hours={newBlock.hours} coords={[newBlock.xPos, newBlock.yPos]} minutes={newBlock.minutes} duration={newBlock.duration} color={newBlock.color} handleDelete={handleDelete} />    
+                                <TimeBlock key={newBlock.name} name={newBlock.name} hours={newBlock.hours} yPos={newBlock.yPos} 
+                                           minutes={newBlock.minutes} duration={newBlock.duration} 
+                                           color={newBlock.color} handleDelete={handleDelete} updateCoords={updateCoords} />    
                             ))}
                         </Grid>
                     </Grid>
