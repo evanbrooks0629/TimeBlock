@@ -11,7 +11,7 @@ function TimeBlock(props) {
     let lineHeight = height - 2;
     const lineHeightPixels = String(lineHeight) + "px";
 
-    const [strikethrough, setStrikethrough] = React.useState("");
+    const [completed, setCompleted] = React.useState(props.completed);
     const [yPos, setYPos] = React.useState(props.yPos);
 
     const handleDelete = name => {
@@ -24,8 +24,8 @@ function TimeBlock(props) {
                 break;
             case 2:
                 // double click
-                strikethrough === "" ?
-                setStrikethrough("line-through") : setStrikethrough("");
+                props.updateCompleted(props.name, !completed);
+                setCompleted(!completed);
                 break;
             case 3:
                 break;
@@ -62,7 +62,7 @@ function TimeBlock(props) {
         >
             <Grid container style={{position: "absolute", marginLeft: "2.95%", width: "31.58%", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
                 <Grid item xs={6} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
-                    <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: strikethrough, textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
+                    <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
                 <Grid item xs={4} sm={3} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingRight: "10px", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
@@ -328,7 +328,8 @@ function DayBlock() {
             minutes: mins,
             duration: duration,
             color: color,
-            yPos: 0
+            yPos: 0,
+            completed: false
         }
         blocks.push(newBlock);
         setBlocks(blocks);
@@ -347,6 +348,20 @@ function DayBlock() {
             let newBlock = blocks[i];
             if (newBlock.name === name) {
                 newBlock.yPos = newYPos;
+            }
+            newBlocks.push(newBlock);
+        }
+        setBlocks(newBlocks);
+        writeFile(newBlocks);
+    }
+
+    const updateCompleted = (name, newCompleted) => {
+        let newBlocks = [];
+        for (let i = 0; i < blocks.length; i++) {
+            let newBlock = blocks[i];
+            if (newBlock.name === name) {
+                console.log("block " + newBlock.name + " set to " + newCompleted);
+                newBlock.completed = newCompleted;
             }
             newBlocks.push(newBlock);
         }
@@ -378,8 +393,8 @@ function DayBlock() {
                             {
                             blocks.map(newBlock => (
                                 <TimeBlock key={newBlock.name} name={newBlock.name} hours={newBlock.hours} yPos={newBlock.yPos} 
-                                           minutes={newBlock.minutes} duration={newBlock.duration} 
-                                           color={newBlock.color} handleDelete={handleDelete} updateCoords={updateCoords} />    
+                                           minutes={newBlock.minutes} duration={newBlock.duration} color={newBlock.color} completed={newBlock.completed}
+                                           handleDelete={handleDelete} updateCoords={updateCoords} updateCompleted={updateCompleted} />    
                             ))}
                         </Grid>
                     </Grid>
