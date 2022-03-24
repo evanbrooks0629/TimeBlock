@@ -1,0 +1,152 @@
+{
+    "hours": [
+        {
+            "time": "6am",
+            "num": 6
+        }, 
+        {
+            "time": "7am",
+            "num": 7
+        }, 
+        {
+            "time": "8am",
+            "num": 8
+        }, 
+        {
+            "time": "9am",
+            "num": 9
+        }, 
+        {
+            "time": "10am",
+            "num": 10
+        }, 
+        {
+            "time": "11am",
+            "num": 11
+        }, 
+        {
+            "time": "12pm",
+            "num": 12
+        }, 
+        {
+            "time": "1pm",
+            "num": 13
+        }, 
+        {
+            "time": "2pm",
+            "num": 14
+        }, 
+        {
+            "time": "3pm",
+            "num": 15
+        }, 
+        {
+            "time": "4pm",
+            "num": 16
+        }, 
+        {
+            "time": "5pm",
+            "num": 17
+        }, 
+        {
+            "time": "6pm",
+            "num": 18
+        }, 
+        {
+            "time": "7pm",
+            "num": 19
+        }, 
+        {
+            "time": "8pm",
+            "num": 20
+        }, 
+        {
+            "time": "9pm",
+            "num": 21
+        }, 
+        {
+            "time": "10pm",
+            "num": 22
+        }, 
+        {
+            "time": "11pm",
+            "num": 23
+        }, 
+        {
+            "time": "12am",
+            "num": 0
+        }
+    ],
+    "hoursInputs": [
+        {
+            "value": 0,
+            "label": 0
+        },
+        {
+            "value": 1,
+            "label": 1
+        },
+        {
+            "value": 2,
+            "label": 2
+        },
+        {
+            "value": 3,
+            "label": 3
+        },
+        {
+            "value": 4,
+            "label": 4
+        },
+        {
+            "value": 5,
+            "label": 5
+        },
+        {
+            "value": 6,
+            "label": 6
+        },
+        {
+            "value": 7,
+            "label": 7
+        },
+        {
+            "value": 8,
+            "label": 8
+        },
+        {
+            "value": 9,
+            "label": 9
+        },
+        {
+            "value": 10,
+            "label": 10
+        },
+        {
+            "value": 11,
+            "label": 11
+        },
+        {
+            "value": 12,
+            "label": 12
+        }
+    ],
+    "minutesInputs": [
+        {
+            "value": 0,
+            "label": 0
+        },
+        {
+            "value": 15,
+            "label": 15
+        },
+        {
+            "value": 30,
+            "label": 30
+        },
+        {
+            "value": 45,
+            "label": 45
+        }
+    ]
+}
