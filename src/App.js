@@ -137,7 +137,7 @@ function App() {
         </Grid>
         <Grid item xs={4} sm={4} md={4} lg={4} />
         <Grid item xs={6} sm={6} md={6} lg={6}>
-          <Typography align="right" variant="h6" style={{paddingRight: "45px", color: "#666666"}}>{currDay}, {currMonth} {currDate}{suffix}</Typography>
+          <Typography align="right" variant="h6" style={{paddingRight: "45px", color: "#aaaaaa"}}>{currDay}, {currMonth} {currDate}{suffix}</Typography>
         </Grid>
         <Grid item xs={12} />
         <DayBlock />

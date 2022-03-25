@@ -58,7 +58,7 @@ function TimeBlock(props) {
             }}
             onDrag={handleDrag}
         >
-            <Grid container style={{position: "absolute", marginLeft: "2.95%", width: "31.58%", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+            <Grid container style={{position: "absolute", marginLeft: "2.95%", width: "31.5%", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
                 <Grid item xs={6} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>

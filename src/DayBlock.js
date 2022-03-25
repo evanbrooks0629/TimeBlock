@@ -50,7 +50,7 @@ function DayBlock() {
                     <div style={{height: "10px", width:"50%", marginLeft: "50%", borderBottom: "1px solid #eeeeee"}}></div>
                     <div style={{height: "10px", width:"25%", marginLeft: "75%", borderBottom: "1px solid #eeeeee"}}></div>
                 </Grid>,
-                <Grid item xs={11} style={{height: "44px", backgroundColor: "#222222", borderBottom: "1px solid #eeeeee", borderTop: "1px solid #eeeeee"}}></Grid>]
+                <Grid item xs={11} style={{height: "44px", backgroundColor: "transparent", borderBottom: "1px solid #eeeeee", borderTop: "1px solid #eeeeee", borderRight: "1px solid #eeeeee"}}></Grid>]
             );
         } else {
             items.push(
@@ -59,7 +59,7 @@ function DayBlock() {
                     <div style={{height: "10px", width:"50%", marginLeft: "50%", borderBottom: "1px solid #eeeeee"}}></div>
                     <div style={{height: "10px", width:"25%", marginLeft: "75%", borderBottom: "1px solid #eeeeee"}}></div>
                 </Grid>,
-                <Grid item xs={11} style={{height: "44px", backgroundColor: "#222222", borderBottom: "1px solid #eeeeee"}}></Grid>]
+                <Grid item xs={11} style={{height: "44px", backgroundColor: "transparent", borderBottom: "1px solid #eeeeee", borderRight: "1px solid #eeeeee"}}></Grid>]
             );
         }
     }
@@ -67,7 +67,7 @@ function DayBlock() {
         <Grid item xs={12} style={{height: "12px"}}></Grid>
     );
 
-    const writeFile = newBlocks => {
+    const writeData = newBlocks => {
         sessionStorage.setItem("blocks", JSON.stringify(newBlocks));
     }
 
@@ -116,7 +116,7 @@ function DayBlock() {
         }
         blocks.push(newBlock);
         setBlocks(blocks);
-        writeFile(blocks);
+        writeData(blocks);
 
         // reset dialog states
         setName("");
@@ -135,7 +135,7 @@ function DayBlock() {
             newBlocks.push(newBlock);
         }
         setBlocks(newBlocks);
-        writeFile(newBlocks);
+        writeData(newBlocks);
     }
 
     const updateCompleted = (name, newCompleted) => {
@@ -143,19 +143,18 @@ function DayBlock() {
         for (let i = 0; i < blocks.length; i++) {
             let newBlock = blocks[i];
             if (newBlock.name === name) {
-                console.log("block " + newBlock.name + " set to " + newCompleted);
                 newBlock.completed = newCompleted;
             }
             newBlocks.push(newBlock);
         }
         setBlocks(newBlocks);
-        writeFile(newBlocks);
+        writeData(newBlocks);
     }
 
     const handleDelete = name => {
         const newBlocks = blocks.filter(block => block.name !== name);
         setBlocks(newBlocks);
-        writeFile(newBlocks);
+        writeData(newBlocks);
     }
 
     return (
@@ -295,4 +294,3 @@ function DayBlock() {
 }
   
 export default DayBlock;
-  
