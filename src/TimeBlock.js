@@ -61,7 +61,7 @@ function TimeBlock(props) {
             {
             // marginLeft: "2.95%", width: "31.5%",
             }
-            <Grid container sx={{ width: { xs: '66%', sm: '65%', md: '31.5%', lg: '31.5%' }, marginLeft: { xs: '6%', sm: '6%', md: '2.95%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+            <Grid container sx={{ width: { xs: '66%', sm: '65%', md: '31.5%', lg: '31.5%' }, marginLeft: { xs: '6%', sm: '6%', md: '2.95%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onTap={handleClick} onClick={handleClick}>
                 <Grid item xs={6} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
@@ -69,7 +69,7 @@ function TimeBlock(props) {
                     <Typography variant="h7" style={{color: "white", paddingRight: "10px", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <Button onClick={() => handleDelete(props.name)} style={{cursor: 'pointer', color: "white", width: "50%", height: "20px"}}>&#10006;</Button>
+                    <Button style={{cursor: 'pointer', color: "white", width: "50%", height: "20px"}} onTap={() => handleDelete(props.name)} onClick={() => handleDelete(props.name)}>&#10006;</Button>
                 </Grid>
             </Grid>
         </Draggable>
