@@ -132,7 +132,7 @@ function App() {
 
   return (
     <div className="App">
-      <Grid container spacing={3}>
+      <Grid container spacing={3} align="right">
         <Grid item xs={12} style={{height: "30px"}} /> 
         <Grid item xs={2} sm={2} md={2} lg={2} align="center">
           <img src={logo} alt="logo" style={{paddingLeft: "20px", width: "120px"}} />
@@ -143,8 +143,8 @@ function App() {
         </Grid>
         <Grid item xs={12} />
         <DayBlock />
-        <Typography align="right" variant="h7" style={{paddingRight: "45px", color: "#aaaaaa"}}>Version 1.0</Typography>
-        <Typography align="right" variant="h7" style={{paddingRight: "45px", color: "#aaaaaa"}}>Brooks Development Co.</Typography>
+        <Typography align="right" variant="h7" style={{paddingLeft: "40px", color: "#aaaaaa"}}>Version 1.0</Typography>
+        <Typography align="right" variant="h7" style={{paddingLeft: "40px", color: "#aaaaaa"}}>Brooks Development Co.</Typography>
       </Grid>
       
     </div>
