@@ -69,7 +69,7 @@ function TimeBlock(props) {
                     <Typography variant="h7" style={{color: "white", paddingRight: "10px", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <Button onClick={() => handleDelete(props.name)} style={{color: "white", width: "50%", height: "20px"}}>&#10006;</Button>
+                    <Button onClick={() => handleDelete(props.name)} style={{cursor: 'pointer', color: "white", width: "50%", height: "20px"}}>&#10006;</Button>
                 </Grid>
             </Grid>
         </Draggable>
