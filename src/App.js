@@ -137,13 +137,14 @@ function App() {
         <Grid item xs={2} sm={2} md={2} lg={2} align="center">
           <img src={logo} alt="logo" style={{paddingLeft: "20px", width: "120px"}} />
         </Grid>
-        <Grid item xs={4} sm={4} md={4} lg={4} />
-        <Grid item xs={6} sm={6} md={6} lg={6} align="right">
+        <Grid item xs={1} sm={4} md={4} lg={4} />
+        <Grid item xs={9} sm={6} md={6} lg={6} align="right">
           <Typography align="right" variant="h6" style={{paddingRight: "45px", color: "#aaaaaa"}}>{currDay}, {currMonth} {currDate}{suffix}</Typography>
-          <Typography align="right" variant="h7" style={{paddingRight: "45px", color: "#aaaaaa"}}>V 1.0</Typography>
         </Grid>
         <Grid item xs={12} />
         <DayBlock />
+        <Typography align="right" variant="h7" style={{paddingRight: "45px", color: "#aaaaaa"}}>Version 1.0</Typography>
+        <Typography align="right" variant="h7" style={{paddingRight: "45px", color: "#aaaaaa"}}>Brooks Development Co.</Typography>
       </Grid>
       
     </div>
