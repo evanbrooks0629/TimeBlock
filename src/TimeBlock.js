@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, Grid, Button } from '@mui/material';
+import { Typography, Grid, Button, Checkbox } from '@mui/material';
 import Draggable from 'react-draggable'; 
 
 function TimeBlock(props) {
@@ -11,6 +11,7 @@ function TimeBlock(props) {
 
     const [completed, setCompleted] = React.useState(props.completed);
     const [yPos, setYPos] = React.useState(props.yPos);
+    const [checked, setChecked] = React.useState(props.completed);
 
     const handleDelete = name => {
         props.handleDelete(name);
@@ -24,6 +25,7 @@ function TimeBlock(props) {
                 // double click
                 props.updateCompleted(props.name, !completed);
                 setCompleted(!completed);
+                setChecked(!checked);
                 break;
             case 3:
                 break;
@@ -44,6 +46,12 @@ function TimeBlock(props) {
         props.updateCoords(props.name, yPos + y);
     }
 
+    const onCheckboxChange = () => {
+        props.updateCompleted(props.name, !completed);
+        setCompleted(!completed);
+        setChecked(!checked);
+    }
+
     return (
         <Draggable
             axis= 'y'
@@ -61,14 +69,15 @@ function TimeBlock(props) {
             {
             // marginLeft: "2.95%", width: "31.5%",
             }
-            <Grid container sx={{ width: { xs: '66%', sm: '65%', md: '31.5%', lg: '31.5%' }, marginLeft: { xs: '6%', sm: '6%', md: '2.95%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onTouchStart={handleClick} onClick={handleClick}>
-                <Grid item xs={6} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
+            <Grid container sx={{ width: { xs: '66%', sm: '65%', md: '45%', lg: '31.5%' }, marginLeft: { xs: '6%', sm: '6%', md: '4%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+                <Grid item xs={6} sm={6} md={6} lg={6} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
-                <Grid item xs={4} sm={3} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <Typography variant="h7" style={{color: "white", paddingRight: "10px", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
-                </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
+                    <Typography variant="h7" style={{color: "white", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
+                </Grid>
+                <Grid item xs={4} sm={4} md={4} lg={4} align="right" style={{lineHeight: lineHeightPixels}}>
+                    <Checkbox checked={completed ? true : false} onChange={onCheckboxChange} onTouchStart={onCheckboxChange} style={{color: "#ffffff"}} />
                     <Button style={{cursor: 'pointer', color: "white", width: "50%", height: "20px"}} onTouchStart={() => handleDelete(props.name)} onClick={() => handleDelete(props.name)}>&#10006;</Button>
                 </Grid>
             </Grid>

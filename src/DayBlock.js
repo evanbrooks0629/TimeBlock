@@ -159,8 +159,8 @@ function DayBlock() {
 
     return (
     <Grid container spacing={3}>
-        <Grid item xs={1}/>
-        <Grid item xs={10} sm={10} md={5} lg={5}>
+        <Grid item xs={1} />
+        <Grid item xs={10} sm={10} md={7} lg={5}>
             <Grid container spacing={0}>
                 <Grid item xs={2}>
                     <Grid container>
@@ -184,7 +184,7 @@ function DayBlock() {
             </Grid>
         </Grid>
         <Grid item xs={1} sm={1} md={0} lg={0} sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} />
-        <Grid item xs={12} sm={12} md={6} lg={6} >
+        <Grid item xs={12} sm={12} md={4} lg={6} >
           {
             // area to create events
           }
