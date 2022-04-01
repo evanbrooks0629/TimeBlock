@@ -143,8 +143,10 @@ function App() {
         </Grid>
         <Grid item xs={12} />
         <DayBlock />
-        <Typography align="right" variant="h7" style={{paddingLeft: "40px", color: "#aaaaaa"}}>Version 1.0</Typography>
-        <Typography align="right" variant="h7" style={{paddingLeft: "40px", color: "#aaaaaa"}}>Brooks Development Co.</Typography>
+        <Grid item xs={12} align="center">
+          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.0 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
+          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Brooks Development Co.</Typography>
+        </Grid>
       </Grid>
       
     </div>

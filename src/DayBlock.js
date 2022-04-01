@@ -275,8 +275,8 @@ function DayBlock() {
                             </Grid>
                         </DialogContent>
                         <DialogActions>
-                        <Button onClick={handleClose}>Cancel</Button>
-                        <Button variant="contained" onClick={addBlock}>Add Block</Button>
+                        <Button style={{color: "#8C52FF", textTransform: "none"}} onClick={handleClose}>Cancel</Button>
+                        <Button variant="contained" style={{backgroundColor: "#8C52FF", textTransform: "none"}} onClick={addBlock}>Add Block</Button>
                         </DialogActions>
                     </Dialog>
               </Grid>
