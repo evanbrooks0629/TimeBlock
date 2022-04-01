@@ -18,8 +18,7 @@ function DayBlock() {
     const [hrs, setHours] = React.useState(1);
     const [mins, setMinutes] = React.useState(0);
     const [color, setColor] = React.useState("#ff0000");
-    // const [blocks, setBlocks] = React.useState(sessionStorage.getItem("blocks") ? JSON.parse(sessionStorage.getItem("blocks")) : []);
-    const [blocks, setBlocks] = React.useState(localStorage.getItem("blocks") ? JSON.parse(localStorage.getItem("blocks")) : []);
+    const [blocks, setBlocks] = React.useState(sessionStorage.getItem("blocks") ? JSON.parse(sessionStorage.getItem("blocks")) : []);
     const [currNum, setCurrNum] = React.useState(new Date().getHours());
 
     React.useEffect(() => {
