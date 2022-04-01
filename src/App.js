@@ -87,20 +87,22 @@ function App() {
         break;
     }
 
+    console.log(day.charAt(day.length-1));
+    console.log(day);
     switch (day.charAt(day.length-1)) {
-      case 1:
-        if (day !== 11)
+      case "1":
+        if (day !== 11) 
           ending = "st";
         else
           ending = "th";
         break;
-      case 2:
+      case "2":
         if (day !== 12)
           ending = "nd";
         else 
           ending = "th";
         break;
-      case 3:
+      case "3":
         if (day !== 13)
           ending = "rd";
         else 
@@ -108,8 +110,8 @@ function App() {
         break;
       default:
         ending = "th";
-        break;
     }
+    console.log(ending);
 
     setWeekDay(weekday);
     setMonth(month);

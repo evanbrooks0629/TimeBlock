@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Typography, Grid, Button, Checkbox } from '@mui/material';
+import { Typography, Grid, IconButton, Checkbox } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
 import Draggable from 'react-draggable'; 
 
 function TimeBlock(props) {
@@ -70,14 +71,16 @@ function TimeBlock(props) {
             // marginLeft: "2.95%", width: "31.5%",
             }
             <Grid container sx={{ width: { xs: '66%', sm: '65%', md: '45%', lg: '31.5%' }, marginLeft: { xs: '6%', sm: '6%', md: '4%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
-                <Grid item xs={5} sm={6} md={6} lg={6} align="left" style={{lineHeight: lineHeightPixels}}>
+                <Grid item xs={7} sm={8} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
-                <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
+                <Grid item xs={1} sm={1} md={1} lg={1} align="right" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
-                <Grid item xs={5} sm={4} md={4} lg={4} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <Button style={{cursor: 'pointer', color: "white", width: "50%", height: "20px"}} onTouchStart={() => handleDelete(props.name)} onClick={() => handleDelete(props.name)}>&#10006;</Button>
+                <Grid item xs={4} sm={3} md={3} lg={3} align="right" style={{lineHeight: lineHeightPixels}}>
+                    <IconButton aria-label="delete" size="smaall" style={{cursor: 'pointer', color: "white", height: "20px"}} onTouchStart={() => handleDelete(props.name)} onClick={() => handleDelete(props.name)}>
+                        <CloseIcon />
+                    </IconButton>
                     <Checkbox checked={completed ? true : false} onChange={onCheckboxChange} onTouchStart={onCheckboxChange} style={{color: "#ffffff"}} />
                 </Grid>
             </Grid>
