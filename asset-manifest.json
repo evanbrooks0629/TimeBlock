@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/TimeBlock/static/css/main.073c9b0a.css",
-    "main.js": "/TimeBlock/static/js/main.f5f45ba0.js",
+    "main.js": "/TimeBlock/static/js/main.8999957f.js",
     "static/js/787.844d3879.chunk.js": "/TimeBlock/static/js/787.844d3879.chunk.js",
     "index.html": "/TimeBlock/index.html",
     "main.073c9b0a.css.map": "/TimeBlock/static/css/main.073c9b0a.css.map",
-    "main.f5f45ba0.js.map": "/TimeBlock/static/js/main.f5f45ba0.js.map",
+    "main.8999957f.js.map": "/TimeBlock/static/js/main.8999957f.js.map",
     "787.844d3879.chunk.js.map": "/TimeBlock/static/js/787.844d3879.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.f5f45ba0.js"
+    "static/js/main.8999957f.js"
   ]
 }
