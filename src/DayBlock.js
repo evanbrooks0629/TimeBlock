@@ -287,7 +287,7 @@ function DayBlock() {
                 <Typography align="left" variant="h7" style={{color: "#eeeeee"}}>Drag the blocks to adjust the times, click the 'x' to delete a block, and double click a block to complete it.</Typography>
               </Grid>
               <Grid item xs={2} />
-              <Grid item xs={12} sx={{ height: { xs: '20px', sm: '2px', md: '0px', lg: '0px' } }} />
+              <Grid item xs={12} sx={{ height: { xs: '20px', sm: '20px', md: '0px', lg: '0px' } }} />
           </Grid>
         </Grid>
     </Grid>
