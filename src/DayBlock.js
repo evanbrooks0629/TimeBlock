@@ -189,16 +189,17 @@ function DayBlock() {
             // area to create events
           }
           <Grid container spacing={0}>
-              <Grid item xs={12} sx={{ height: { xs: '10px', sm: '10px', md: '260px', lg: '260px' } }} />
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ height: { xs: '0px', sm: '10px', md: '260px', lg: '260px' } }} />
+              <Grid item xs={12} sx={{ display: { xs: 'none', sm: 'block', md: 'block', lg: 'block' } }}>
                 <Typography align="center" variant="h6" style={{color: "#eeeeee"}}>Add blocks to build your day</Typography>
               </Grid>
-              <Grid item xs={12} style={{height: "50px"}} />
+              <Grid item xs={12} sx={{ height: { xs: '0px', sm: '50px', md: '50px', lg: '50px' } }} />
               <Grid item xs={3} />
               <Grid item xs={6}>
                     <Button 
                         variant="contained" 
                         endIcon={<AddIcon />} 
+                        sx={{ position: {xs: 'fixed', sm: 'static', md: 'static', lg: 'static'}, bottom: {xs:'20px'}, left: {xs:'10%'}, width: {xs: '80%'}}}
                         style={{backgroundColor: "#eeeeee", color: "black", height: "50px", textTransform: "none", fontWeight: "bold"}} 
                         fullWidth
                         onClick={handleClickOpen}>
@@ -278,16 +279,16 @@ function DayBlock() {
                     </Dialog>
               </Grid>
               <Grid item xs={3} />
-              <Grid item xs={12} sx={{ height: { xs: '50px', sm: '50px', md: '320px', lg: '320px' } }} />
+              <Grid item xs={12} sx={{ height: { xs: '0px', sm: '50px', md: '320px', lg: '320px' } }}/>
               <Grid item xs={1} />
               <Grid item xs={1}>
                   <Typography variant="h4" style={{color: "red"}}>*</Typography>
               </Grid>
               <Grid item xs={8} align="left">
-                <Typography align="left" variant="h7" style={{color: "#eeeeee"}}>Drag the blocks to adjust the times, click the 'x' to delete a block, and double click a block to complete it.</Typography>
+                <Typography align="left" variant="h7" style={{color: "#eeeeee"}} >Drag the blocks to adjust the times, click the 'x' to delete a block, and double click a block to complete it.</Typography>
               </Grid>
               <Grid item xs={2} />
-              <Grid item xs={12} sx={{ height: { xs: '20px', sm: '20px', md: '0px', lg: '0px' } }} />
+              <Grid item xs={12} sx={{ height: { xs: '120px', sm: '20px', md: '0px', lg: '0px' } }} />
           </Grid>
         </Grid>
     </Grid>
