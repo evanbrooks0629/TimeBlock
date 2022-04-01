@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, Button } from '@mui/material';
 import Draggable from 'react-draggable'; 
 
 function TimeBlock(props) {
@@ -58,7 +58,10 @@ function TimeBlock(props) {
             }}
             onDrag={handleDrag}
         >
-            <Grid container style={{position: "absolute", marginLeft: "2.95%", width: "31.5%", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+            {
+            // marginLeft: "2.95%", width: "31.5%",
+            }
+            <Grid container sx={{ width: { xs: '66%', sm: '65%', md: '31.5%', lg: '31.5%' }, marginLeft: { xs: '6%', sm: '6%', md: '2.95%', lg: '2.95%' } }} style={{position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
                 <Grid item xs={6} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
@@ -66,7 +69,7 @@ function TimeBlock(props) {
                     <Typography variant="h7" style={{color: "white", paddingRight: "10px", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <Typography variant="h7" onClick={() => handleDelete(props.name)} style={{color: "white", paddingRight: "10px"}}>&#10006;</Typography>
+                    <Button onClick={() => handleDelete(props.name)} style={{color: "white", width: "50%", height: "20px"}}>&#10006;</Button>
                 </Grid>
             </Grid>
         </Draggable>
