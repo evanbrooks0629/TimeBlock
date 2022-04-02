@@ -78,10 +78,10 @@ function TimeBlock(props) {
                     <Typography variant="h7" style={{color: "white", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
                 <Grid item xs={3} sm={3} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <IconButton aria-label="delete" size="smaall" style={{cursor: 'pointer', color: "white", height: "20px"}} onTouchStart={() => handleDelete(props.name)} onClick={() => handleDelete(props.name)}>
+                    <IconButton aria-label="delete" style={{paddingRight: "0px", cursor: 'pointer', color: "white", height: "20px"}} onTouchStart={() => handleDelete(props.name)} onClick={() => handleDelete(props.name)}>
                         <CloseIcon />
                     </IconButton>
-                    <Checkbox checked={completed ? true : false} onChange={onCheckboxChange} onTouchStart={onCheckboxChange} style={{color: "#ffffff"}} />
+                    <Checkbox checked={completed ? true : false} onChange={onCheckboxChange} onTouchStart={onCheckboxChange} style={{color: "#ffffff", paddingLeft: "5px"}} />
                 </Grid>
             </Grid>
         </Draggable>
