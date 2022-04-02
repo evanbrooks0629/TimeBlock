@@ -70,14 +70,14 @@ function TimeBlock(props) {
             {
             // marginLeft: "2.95%", width: "31.5%",
             }
-            <Grid container sx={{ width: { xs: '66%', sm: '65%', md: '45%', lg: '31.5%' }, marginLeft: { xs: '6%', sm: '6%', md: '4%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
-                <Grid item xs={7} sm={8} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
+            <Grid container sx={{ width: { xs: '78%', sm: '64%', md: '43.8%', lg: '31%' }, marginLeft: { xs: '7.5%', sm: '6%', md: '4%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+                <Grid item xs={7} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
-                <Grid item xs={1} sm={1} md={1} lg={1} align="right" style={{lineHeight: lineHeightPixels}}>
+                <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
-                <Grid item xs={4} sm={3} md={3} lg={3} align="right" style={{lineHeight: lineHeightPixels}}>
+                <Grid item xs={3} sm={3} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
                     <IconButton aria-label="delete" size="smaall" style={{cursor: 'pointer', color: "white", height: "20px"}} onTouchStart={() => handleDelete(props.name)} onClick={() => handleDelete(props.name)}>
                         <CloseIcon />
                     </IconButton>

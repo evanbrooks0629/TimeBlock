@@ -161,8 +161,8 @@ function DayBlock() {
 
     return (
     <Grid container spacing={3}>
-        <Grid item xs={1} />
-        <Grid item xs={10} sm={10} md={7} lg={5}>
+        <Grid item xs={0} sm={1} md={1} lg={1} sx={{ display: {xs: 'none', sm: 'block', md: 'block', lg: 'block'} }} />
+        <Grid item xs={12} sm={10} md={7} lg={5} sx={{ paddingRight: {xs: '10px'} }}>
             <Grid container spacing={0}>
                 <Grid item xs={2}>
                     <Grid container>
@@ -185,7 +185,7 @@ function DayBlock() {
                 </Grid>
             </Grid>
         </Grid>
-        <Grid item xs={1} sm={1} md={0} lg={0} sx={{ display: { xs: 'block', sm: 'block', md: 'none', lg: 'none' } }} />
+        <Grid item xs={0} sm={1} md={0} lg={0} sx={{ display: { xs: 'none', sm: 'block', md: 'none', lg: 'none' } }} />
         <Grid item xs={12} sm={12} md={4} lg={6} >
           {
             // area to create events
@@ -290,7 +290,7 @@ function DayBlock() {
                 <Typography align="left" variant="h7" style={{color: "#eeeeee"}} >Drag the blocks to adjust the times, click the 'x' to delete a block, and double click a block to complete it.</Typography>
               </Grid>
               <Grid item xs={2} />
-              <Grid item xs={12} sx={{ height: { xs: '120px', sm: '20px', md: '0px', lg: '0px' } }} />
+              <Grid item xs={12} sx={{ height: { xs: '50px', sm: '20px', md: '0px', lg: '0px' } }} />
           </Grid>
         </Grid>
     </Grid>

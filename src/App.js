@@ -147,6 +147,7 @@ function App() {
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.0 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Brooks Development Co.</Typography>
         </Grid>
+        <Grid item xs={12} sx={{ height: { xs: '90px', sm: '0px', md: '0px', lg: '0px' } }} />
       </Grid>
       
     </div>
