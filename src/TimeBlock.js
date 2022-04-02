@@ -70,7 +70,7 @@ function TimeBlock(props) {
             {
             // marginLeft: "2.95%", width: "31.5%",
             }
-            <Grid container sx={{ width: { xs: '78.2%', sm: '64%', md: '43.8%', lg: '31%' }, marginLeft: { xs: '7.5%', sm: '6%', md: '4%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
+            <Grid container sx={{ width: { xs: '78.3%', sm: '64%', md: '43.8%', lg: '31%' }, marginLeft: { xs: '7.5%', sm: '6%', md: '4%', lg: '2.95%' } }} style={{cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
                 <Grid item xs={7} sm={7} md={8} lg={8} align="left" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
