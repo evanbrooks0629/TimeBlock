@@ -68,8 +68,8 @@ function TimeBlock(props) {
             onDrag={handleDrag}
         >
             <Grid container style={{width: "91.85%", marginLeft: "8%", cursor: 'pointer', position: "absolute", height: heightPixels, backgroundColor: props.color, textDecorationColor: "#ffffff"}} onClick={handleClick}>
-                <Grid item xs={7} sm={7} md={7} lg={7} align="left" style={{lineHeight: lineHeightPixels}}>
-                    <Typography variant="h7" style={{color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}}>&nbsp;{props.name}&nbsp;</Typography>    
+                <Grid item xs={7} sm={7} md={7} lg={7} align="left" style={{lineHeight: lineHeightPixels, width: "100%", overflow: "hidden", textOverflow: "ellipsis", color: "#ffffff"}}>
+                    <Typography variant="h7" style={{width: "100%", color: "white", paddingLeft: "5px", textDecoration: completed ? "line-through" : "", textDecorationColor: "#ffffff", textDecorationThickness: "0.2em"}} noWrap>&nbsp;{props.name}&nbsp;</Typography>    
                 </Grid>
                 <Grid item xs={2} sm={2} md={2} lg={2} align="right" style={{lineHeight: lineHeightPixels}}>
                     <Typography variant="h7" style={{color: "white", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
