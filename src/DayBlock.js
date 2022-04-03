@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Typography, Grid, Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TextField, MenuItem } from '@mui/material';
+import { inputLabelClasses } from "@mui/material/InputLabel";
 import AddIcon from '@mui/icons-material/Add';
 import { ColorPicker } from 'mui-color';
 import TimeBlock from './TimeBlock';
@@ -172,7 +173,7 @@ function DayBlock() {
                 <Grid item xs={10}>
                     <Grid container>
                         {items}
-                        <Grid item xs={12} style={{marginTop: "-793px"}} className="offsetParent">
+                        <Grid item xs={12} style={{marginTop: "-793px", position: "relative"}} className="offsetParent">
                             <div style={{height: '2px'}}></div>
                             {
                             blocks.map(newBlock => (
@@ -196,8 +197,8 @@ function DayBlock() {
                 <Typography align="center" variant="h6" style={{color: "#eeeeee"}}>Add blocks to build your day</Typography>
               </Grid>
               <Grid item xs={12} sx={{ height: { xs: '0px', sm: '50px', md: '50px', lg: '50px' } }} />
-              <Grid item xs={3} />
-              <Grid item xs={6}>
+              <Grid item xs={3} sm={3} md={1} lg={3} />
+              <Grid item xs={6} sm={6} md={10} lg={6} align="center">
                     <Button 
                         variant="contained" 
                         endIcon={<AddIcon />} 
@@ -208,7 +209,7 @@ function DayBlock() {
                         Add New Block 
                     </Button>
                     <Dialog open={open} onClose={handleClose}>
-                        <DialogTitle>Add New Block</DialogTitle>
+                        <DialogTitle style={{ color: "#8C52FF" }}>Add New Block</DialogTitle>
                         <DialogContent>
                             <DialogContentText>
                                 Please input a name for your block
@@ -225,6 +226,20 @@ function DayBlock() {
                                         variant="standard"
                                         value={name}
                                         onChange={handleChangeName}
+                                        InputLabelProps={{
+                                            sx: {
+                                                color:"#000000", 
+                                                [`&.${inputLabelClasses.shrink}`]: {
+                                                    // when focused
+                                                    color: "#8C52FF"
+                                                  }
+                                            }
+                                        }}
+                                        style={{color: "#000000"}}
+                                        sx={{
+                                            '& .MuiInput-underline:before': { borderBottomColor: '#000000' },
+                                            '& .MuiInput-underline:after': { borderBottomColor: '#8C52FF' }
+                                        }}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -240,6 +255,28 @@ function DayBlock() {
                                         value={hrs}
                                         onChange={handleChangeHours}
                                         fullWidth
+                                        sx={{
+                                            "& .MuiOutlinedInput-root:hover": {
+                                              "& > fieldset": {
+                                                borderColor: "#8C52FF"
+                                              }
+                                            },
+                                            "& .MuiOutlinedInput-root": {
+                                                "& > fieldset": {
+                                                  borderColor: "#8C52FF"
+                                                }
+                                            }
+                                        }}
+                                        InputLabelProps={{
+                                            sx: {
+                                                color:"#000000", 
+                                                [`&.${inputLabelClasses.shrink}`]: {
+                                                    // when focused
+                                                    color: "#8C52FF"
+                                                  }
+                                            }
+                                        }}
+                                        variant="outlined"
                                     >
                                         {hoursInputs.map((option) => (
                                             <MenuItem key={option.value} value={option.value}>
@@ -256,6 +293,28 @@ function DayBlock() {
                                         value={mins}
                                         onChange={handleChangeMinutes}
                                         fullWidth
+                                        sx={{
+                                            "& .MuiOutlinedInput-root:hover": {
+                                              "& > fieldset": {
+                                                borderColor: "#8C52FF"
+                                              }
+                                            },
+                                            "& .MuiOutlinedInput-root": {
+                                                "& > fieldset": {
+                                                  borderColor: "#8C52FF"
+                                                }
+                                            }
+                                        }}
+                                        InputLabelProps={{
+                                            sx: {
+                                                color:"#000000", 
+                                                [`&.${inputLabelClasses.shrink}`]: {
+                                                    // when focused
+                                                    color: "#8C52FF"
+                                                  }
+                                            }
+                                        }}
+                                        variant="outlined"
                                     >
                                         {minutesInputs.map((option) => (
                                             <MenuItem key={option.value} value={option.value}>
@@ -270,23 +329,36 @@ function DayBlock() {
                                     </DialogContentText>
                                 </Grid>
                                 <Grid item xs={6}>
-                                    <ColorPicker value={color} onChange={handleChangeColor}  />
+                                    <ColorPicker value={color} onChange={handleChangeColor} 
+                                    sx={{
+                                        "& .MuiInputBase-root:hover": {
+                                          "& > fieldset": {
+                                            borderColor: "#8C52FF !important"
+                                          }
+                                        },
+                                        "& .Mui-focused": {
+                                            "& > fieldset": {
+                                              borderColor: "#8C52FF"
+                                            }
+                                        }
+                                    }}
+                                    />
                                 </Grid>
                             </Grid>
                         </DialogContent>
                         <DialogActions>
-                        <Button style={{color: "#8C52FF", textTransform: "none"}} onClick={handleClose}>Cancel</Button>
-                        <Button variant="contained" style={{backgroundColor: "#8C52FF", textTransform: "none"}} onClick={addBlock}>Add Block</Button>
+                            <Button style={{color: "#8C52FF", textTransform: "none"}} onClick={handleClose}>Cancel</Button>
+                            <Button variant="contained" style={{backgroundColor: "#8C52FF", textTransform: "none"}} onClick={addBlock}>Add Block</Button>
                         </DialogActions>
                     </Dialog>
               </Grid>
-              <Grid item xs={3} />
+              <Grid item xs={3} sm={3} md={1} lg={3} />
               <Grid item xs={12} sx={{ height: { xs: '0px', sm: '50px', md: '320px', lg: '320px' } }}/>
-              <Grid item xs={1} />
-              <Grid item xs={1}>
+              <Grid item xs={2} />
+              <Grid item xs={1} align="center">
                   <Typography variant="h4" style={{color: "red"}}>*</Typography>
               </Grid>
-              <Grid item xs={8} align="left">
+              <Grid item xs={7} align="left">
                 <Typography align="left" variant="h7" style={{color: "#eeeeee"}} >Drag the blocks to adjust the times, click the 'x' to delete a block, and double click a block to complete it.</Typography>
               </Grid>
               <Grid item xs={2} />
