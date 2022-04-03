@@ -20,7 +20,6 @@ function DayBlock() {
     const [mins, setMinutes] = React.useState(0);
     const [color, setColor] = React.useState("#ff0000");
     const [blocks, setBlocks] = React.useState(localStorage.getItem("blocks") ? JSON.parse(localStorage.getItem("blocks")) : []);
-    //const [blocks, setBlocks] = React.useState(sessionStorage.getItem("blocks") ? JSON.parse(sessionStorage.getItem("blocks")) : []);
     const [currNum, setCurrNum] = React.useState(new Date().getHours());
 
     React.useEffect(() => {
@@ -30,6 +29,7 @@ function DayBlock() {
         }
     }, []);
     
+    // set times
     for (let i = 0; i < hours.length; i++) {
         times.push(
             [<Grid item xs={11} style={{height: "40px"}}>
@@ -39,6 +39,7 @@ function DayBlock() {
         );
     }
 
+    // set items to display times and current time and boxes for blocks
     for (let i = 0; i < hours.length-1; i++) {
         let currentColor = "transparent";
         if (currNum === hours[i].num && currNum !== 0) {
@@ -71,7 +72,6 @@ function DayBlock() {
 
     const writeData = newBlocks => {
         localStorage.setItem("blocks", JSON.stringify(newBlocks));
-        //sessionStorage.setItem("blocks", JSON.stringify(newBlocks));
     }
 
     const handleClickOpen = () => {
@@ -323,26 +323,13 @@ function DayBlock() {
                                         ))}
                                     </TextField>
                                 </Grid>
-                                <Grid item xs={6}>
+                                <Grid item xs={4}>
                                     <DialogContentText>
                                         Pick a color for your block
                                     </DialogContentText>
                                 </Grid>
-                                <Grid item xs={6}>
-                                    <ColorPicker value={color} onChange={handleChangeColor} 
-                                    sx={{
-                                        "& .MuiInputBase-root:hover": {
-                                          "& > fieldset": {
-                                            borderColor: "#8C52FF !important"
-                                          }
-                                        },
-                                        "& .Mui-focused": {
-                                            "& > fieldset": {
-                                              borderColor: "#8C52FF"
-                                            }
-                                        }
-                                    }}
-                                    />
+                                <Grid item xs={8}>
+                                    <ColorPicker value={color} onChange={handleChangeColor} />
                                 </Grid>
                             </Grid>
                         </DialogContent>
