@@ -229,12 +229,12 @@ function TimeBlock(props) {
                                         ))}
                                     </TextField>
                                 </Grid>
-                                <Grid item xs={4}>
+                                <Grid item xs={2}>
                                     <DialogContentText>
                                         Color
                                     </DialogContentText>
                                 </Grid>
-                                <Grid item xs={8}>
+                                <Grid item xs={10}>
                                     <ColorPicker value={color} onChange={handleChangeColor} />
                                 </Grid>
                             </Grid>
