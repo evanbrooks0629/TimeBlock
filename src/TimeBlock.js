@@ -118,7 +118,7 @@ function TimeBlock(props) {
                     <Typography variant="h7" style={{color: "white", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
                 <Grid item xs={4} sm={4} md={4} lg={4} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <IconButton aria-label="delete" style={{paddingRight: "0px", cursor: 'pointer', color: "white", height: "20px"}} onClick={handleClickOpen}>
+                    <IconButton aria-label="delete" style={{paddingRight: "0px", cursor: 'pointer', color: "white", height: "20px"}} onTouchStart={handleClickOpen} onClick={handleClickOpen}>
                         <ModeEditIcon />
                     </IconButton>
                     <Dialog open={open} onClose={handleClose}>
