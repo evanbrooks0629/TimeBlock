@@ -6,6 +6,32 @@ import { ColorPicker } from 'mui-color';
 import TimeBlock from './TimeBlock';
 import Times from './times.json';
 
+function randomKey() {
+    const lower = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+    const upper = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
+    const nums = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+    let key = "";
+
+    while (key.length < 8) {
+        let choice = Math.floor(Math.random() * 3);
+        switch(choice) {
+            case 0:
+                key += lower[Math.floor(Math.random() * 26)];
+                break;
+            case 1:
+                key += upper[Math.floor(Math.random() * 26)];
+                break;
+            case 2:
+                key += nums[Math.floor(Math.random() * 10)];
+                break;
+            default:
+                break;
+        }
+    }
+
+    return key;
+}
+
 function DayBlock() {
 
     const hours = Times.hours;
@@ -108,7 +134,10 @@ function DayBlock() {
         } else if (mins === 45) {
             duration += 0.75;
         }
+        const randKey = randomKey(8);
+
         const newBlock = {
+            key: randKey,
             name: name,
             hours: hrs,
             minutes: mins,
@@ -128,11 +157,11 @@ function DayBlock() {
         setColor("#ff0000");
     }
 
-    const updateCoords = (name, newYPos) => {
+    const updateCoords = (id, newYPos) => {
         let newBlocks = [];
         for (let i = 0; i < blocks.length; i++) {
             let newBlock = blocks[i];
-            if (newBlock.name === name) {
+            if (newBlock.key === id) {
                 newBlock.yPos = newYPos;
             }
             newBlocks.push(newBlock);
@@ -141,11 +170,11 @@ function DayBlock() {
         writeData(newBlocks);
     }
 
-    const updateCompleted = (name, newCompleted) => {
+    const updateCompleted = (id, newCompleted) => {
         let newBlocks = [];
         for (let i = 0; i < blocks.length; i++) {
             let newBlock = blocks[i];
-            if (newBlock.name === name) {
+            if (newBlock.key === id) {
                 newBlock.completed = newCompleted;
             }
             newBlocks.push(newBlock);
@@ -154,8 +183,35 @@ function DayBlock() {
         writeData(newBlocks);
     }
 
-    const handleDelete = name => {
-        const newBlocks = blocks.filter(block => block.name !== name);
+    const updateEdit = (id, name, hrs, mins, color) => {
+        let newBlocks = [];
+
+        let duration = hrs;
+        if (mins === 15) {
+            duration += 0.25;
+        } else if (mins === 30) {
+            duration += 0.5;
+        } else if (mins === 45) {
+            duration += 0.75;
+        }
+
+        for (let i = 0; i < blocks.length; i++) {
+            let newBlock = blocks[i];
+            if (newBlock.key === id) {
+                newBlock.name = name;
+                newBlock.hours = hrs;
+                newBlock.minutes = mins;
+                newBlock.duration = duration;
+                newBlock.color = color;
+            }
+            newBlocks.push(newBlock);
+        }
+        setBlocks(newBlocks);
+        writeData(newBlocks);
+    }
+
+    const handleDelete = key => {
+        const newBlocks = blocks.filter(block => block.key !== key);
         setBlocks(newBlocks);
         writeData(newBlocks);
     }
@@ -177,9 +233,9 @@ function DayBlock() {
                             <div style={{height: '2px'}}></div>
                             {
                             blocks.map(newBlock => (
-                                <TimeBlock key={newBlock.name} name={newBlock.name} hours={newBlock.hours} yPos={newBlock.yPos} 
+                                <TimeBlock key={newBlock.key} id={newBlock.key} name={newBlock.name} hours={newBlock.hours} yPos={newBlock.yPos} 
                                            minutes={newBlock.minutes} duration={newBlock.duration} color={newBlock.color} completed={newBlock.completed}
-                                           handleDelete={handleDelete} updateCoords={updateCoords} updateCompleted={updateCompleted} />    
+                                           handleDelete={handleDelete} updateCoords={updateCoords} updateCompleted={updateCompleted} handleEdit={updateEdit} />    
                             ))}
                         </Grid>
                     </Grid>
@@ -346,7 +402,10 @@ function DayBlock() {
                   <Typography variant="h4" style={{color: "red"}}>*</Typography>
               </Grid>
               <Grid item xs={7} align="left">
-                <Typography align="left" variant="h7" style={{color: "#eeeeee"}} >Drag the blocks to adjust the times, click the 'x' to delete a block, and double click a block to complete it.</Typography>
+                <Typography align="left" variant="h7" style={{color: "#eeeeee"}} >&bull; Drag the blocks to adjust the times
+                    <br />&bull; Click the edit icon to edit a block
+                    <br />&bull; Click the delete icon to delete a block
+                    <br />&bull; Check or double click a block to complete it</Typography>
               </Grid>
               <Grid item xs={2} />
               <Grid item xs={12} sx={{ height: { xs: '50px', sm: '20px', md: '0px', lg: '0px' } }} />
