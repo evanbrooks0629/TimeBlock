@@ -1,24 +1,21 @@
 import * as React from 'react';
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
-import './App.css';
-import DayBlock from './DayBlock';
-import logo from './TimeBlock.png';
+import './styles/App.css';
+import DayBlock from './components/DayBlock';
+import logo from './assets/TimeBlock.png';
 
-function App() {
-  // get day of week, month, and day of month
+
+const App = () => {
 
   const [currDay, setWeekDay] = React.useState("");
   const [currMonth, setMonth] = React.useState("");
   const [currDate, setDate] = React.useState("");
-  const [suffix, setSuffix] = React.useState("");
-
+  
   const refreshDate = () => {
     const date = new Date();
     let weekday = "";
-    let month = "";
     let day = date.getDate().toString();
-    let ending = "";
 
     switch (date.getDay()) {
       case 0:
@@ -46,77 +43,9 @@ function App() {
         break;
     }
 
-    switch (date.getMonth()) {
-      case 0:
-        month = "January";
-        break;
-      case 1:
-        month = "February";
-        break;
-      case 2:
-        month = "March";
-        break;
-      case 3:
-        month = "April";
-        break;
-      case 4:
-        month = "May";
-        break;
-      case 5:
-        month = "June";
-        break;
-      case 6:
-        month = "July";
-        break;
-      case 7:
-        month = "Auguest";
-        break;
-      case 8:
-        month = "September";
-        break;
-      case 9:
-        month = "October";
-        break;
-      case 10:
-        month = "November";
-        break;
-      case 11:
-        month = "December";
-        break;
-      default:
-        break;
-    }
-
-    console.log(day.charAt(day.length-1));
-    console.log(day);
-    switch (day.charAt(day.length-1)) {
-      case "1":
-        if (day !== 11) 
-          ending = "st";
-        else
-          ending = "th";
-        break;
-      case "2":
-        if (day !== 12)
-          ending = "nd";
-        else 
-          ending = "th";
-        break;
-      case "3":
-        if (day !== 13)
-          ending = "rd";
-        else 
-          ending = "th";
-        break;
-      default:
-        ending = "th";
-    }
-    console.log(ending);
-
     setWeekDay(weekday);
-    setMonth(month);
+    setMonth(date.getMonth() + 1);
     setDate(day);
-    setSuffix(ending);
   }
 
   React.useEffect(() => {
@@ -139,7 +68,7 @@ function App() {
         </Grid>
         <Grid item xs={1} sm={4} md={4} lg={4} />
         <Grid item xs={9} sm={6} md={6} lg={6} align="right">
-          <Typography align="right" variant="h6" style={{paddingRight: "45px", color: "#aaaaaa"}}>{currDay}, {currMonth} {currDate}{suffix}</Typography>
+          <Typography align="right" variant="h6" style={{paddingRight: "45px", color: "#aaaaaa"}}><span style={{color: "#eeeeee"}}>{currDay}</span><span style={{fontSize: "15px"}}>&nbsp;&nbsp;&nbsp;&nbsp;{currMonth}/{currDate}/2022</span></Typography>
         </Grid>
         <Grid item xs={12} />
         <DayBlock />
