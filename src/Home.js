@@ -100,7 +100,7 @@ const Home = () => {
         <Grid container spacing={3}>
             <Grid item xs={12} style={{height: "40px"}} /> 
             <Grid item xs={12} sm={3} md={2} lg={2} align="center">
-                <img src={logo} alt="logo" style={{marginLeft: "20px", width: "120px", boxShadow: "0px 0px 25px 20px rgba(0,0,0,0.97)"}} />
+                <img src={logo} alt="logo" style={{marginLeft: "10px", width: "120px", boxShadow: "0px 0px 25px 20px rgba(0,0,0,0.97)"}} />
             </Grid>
             <Grid item xs={12} sm={1} md={5} lg={6} />
             <Grid item xs={12} sm={8} md={5} lg={4}>
