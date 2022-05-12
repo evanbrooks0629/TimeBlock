@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Grid, Typography, Button } from '@mui/material';
 import './styles/App.css';
 import DayBlock from './components/DayBlock';
-// import logo from './assets/TimeBlock.png';
+import logo from './assets/tb-icon.png';
 
 const Dashboard = () => {
 
@@ -61,19 +61,14 @@ const Dashboard = () => {
     <div className="App">
       <Grid container spacing={3} align="right">
         <Grid item xs={12} style={{height: "30px"}} /> 
-        {/* <Grid item xs={5} sm={2} md={2} lg={2} align="center">
-          <img src={logo} alt="logo" style={{marginLeft: "20px", width: "120px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
-        </Grid> */}
-        <Grid item xs={4} sm={4} md={4} lg={4} align="center">
-          <Typography align="right" variant="h6" style={{color: "#aaaaaa", marginLeft: "5px"}}><span style={{fontSize: "15px"}}>{currDay}&nbsp;&nbsp;{currMonth}/{currDate}</span></Typography>
+        <Grid item xs={4} sm={4} md={4} lg={4} align="left">
+          <img src={logo} alt="logo" style={{width: "30px", marginLeft: "15px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
-        <Grid item xs={4} sm={4} md={4} lg={4} align="left" />
+        <Grid item xs={4} sm={4} md={4} lg={4} align="center">
+          <Typography align="right" variant="h6" style={{color: "#aaaaaa", marginLeft: "5px"}}><span style={{fontSize: "15px"}}>&#5130;&nbsp;&nbsp;{currDay}&nbsp;&nbsp;{currMonth}/{currDate}&nbsp;&nbsp;&#5125;</span></Typography>
+        </Grid>
         <Grid item xs={4} sm={4} md={4} lg={4} align="right">
-          <Button variant="contained" 
-                  style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "10px"}}
-                  href="/TimeBlock/" >
-                  Home
-          </Button>
+          <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "10px"}} href="/TimeBlock/" >Home</Button>
         </Grid>
         <Grid item xs={12} style={{height: "10px"}} />
         <DayBlock />
