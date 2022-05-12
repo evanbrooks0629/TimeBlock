@@ -69,14 +69,14 @@ const Dashboard = () => {
         </Grid>
         <Grid item xs={3} sm={4} md={4} lg={4} align="right">
           <Button variant="contained" 
-                  style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", marginLeft: "10px", borderRadius: "25px", marginRight: "10px"}}
+                  style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "10px"}}
                   href="/TimeBlock/" >
                   Home
           </Button>
         </Grid>
         <DayBlock />
         <Grid item xs={12} align="center">
-          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.2 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
+          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.3 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Brooks Development Co.</Typography>
         </Grid>
         <Grid item xs={12} sx={{ height: { xs: '90px', sm: '0px', md: '0px', lg: '0px' } }} />
