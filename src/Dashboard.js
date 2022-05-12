@@ -60,7 +60,7 @@ const Dashboard = () => {
   return (
     <div className="App">
       <Grid container spacing={3} align="right">
-        <Grid item xs={12} style={{height: "30px"}} /> 
+        <Grid item xs={12} /> 
         <Grid item xs={3} sm={3} md={3} lg={3} align="left">
           <img src={logo} alt="logo" style={{width: "30px", marginLeft: "15px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
@@ -70,7 +70,7 @@ const Dashboard = () => {
         <Grid item xs={3} sm={3} md={3} lg={3} align="right">
           <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "5px"}} href="/TimeBlock/" >Home</Button>
         </Grid>
-        <Grid item xs={12} style={{height: "10px"}} />
+        <Grid item xs={12} />
         <DayBlock />
         <Grid item xs={12} align="center">
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.6 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
