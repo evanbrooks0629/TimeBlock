@@ -65,7 +65,7 @@ const Dashboard = () => {
           <img src={logo} alt="logo" style={{marginLeft: "20px", width: "120px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
         <Grid item xs={4} sm={6} md={6} lg={6} align="right">
-          <Typography align="right" variant="h6" style={{color: "#aaaaaa", marginLeft: "15px"}}><span style={{fontSize: "15px"}}>{currDay}&nbsp;&nbsp;{currMonth}/{currDate}</span></Typography>
+          <Typography align="right" variant="h6" style={{color: "#aaaaaa", marginLeft: "5px"}}><span style={{fontSize: "15px"}}>{currDay}&nbsp;&nbsp;{currMonth}/{currDate}</span></Typography>
         </Grid>
         <Grid item xs={3} sm={4} md={4} lg={4} align="right">
           <Button variant="contained" 
