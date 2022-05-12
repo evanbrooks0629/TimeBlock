@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/TimeBlock/static/css/main.073c9b0a.css",
-    "main.js": "/TimeBlock/static/js/main.014ece32.js",
-    "static/js/787.844d3879.chunk.js": "/TimeBlock/static/js/787.844d3879.chunk.js",
-    "index.html": "/TimeBlock/index.html",
-    "main.073c9b0a.css.map": "/TimeBlock/static/css/main.073c9b0a.css.map",
-    "main.014ece32.js.map": "/TimeBlock/static/js/main.014ece32.js.map",
-    "787.844d3879.chunk.js.map": "/TimeBlock/static/js/787.844d3879.chunk.js.map"
+    "main.css": "./static/css/main.6540c1a6.css",
+    "main.js": "./static/js/main.d64ff173.js",
+    "static/js/787.844d3879.chunk.js": "./static/js/787.844d3879.chunk.js",
+    "static/media/showcase.png": "./static/media/showcase.569b2895ef4805a1a75c.png",
+    "index.html": "./index.html",
+    "main.6540c1a6.css.map": "./static/css/main.6540c1a6.css.map",
+    "main.d64ff173.js.map": "./static/js/main.d64ff173.js.map",
+    "787.844d3879.chunk.js.map": "./static/js/787.844d3879.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.073c9b0a.css",
-    "static/js/main.014ece32.js"
+    "static/css/main.6540c1a6.css",
+    "static/js/main.d64ff173.js"
   ]
 }
