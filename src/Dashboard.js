@@ -61,13 +61,13 @@ const Dashboard = () => {
     <div className="App">
       <Grid container spacing={3} align="right">
         <Grid item xs={12} style={{height: "30px"}} /> 
-        <Grid item xs={3} sm={2} md={2} lg={2} align="center">
+        <Grid item xs={5} sm={2} md={2} lg={2} align="center">
           <img src={logo} alt="logo" style={{marginLeft: "20px", width: "120px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
-        <Grid item xs={5} sm={6} md={6} lg={6} align="right">
+        <Grid item xs={4} sm={6} md={6} lg={6} align="right">
           <Typography align="right" variant="h6" style={{color: "#aaaaaa", marginLeft: "15px"}}><span style={{fontSize: "15px"}}>{currDay}&nbsp;&nbsp;{currMonth}/{currDate}</span></Typography>
         </Grid>
-        <Grid item xs={4} sm={4} md={4} lg={4} align="right">
+        <Grid item xs={3} sm={4} md={4} lg={4} align="right">
           <Button variant="contained" 
                   style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", marginLeft: "10px", borderRadius: "25px", marginRight: "10px"}}
                   href="/TimeBlock/" >
@@ -76,7 +76,7 @@ const Dashboard = () => {
         </Grid>
         <DayBlock />
         <Grid item xs={12} align="center">
-          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.1 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
+          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.2 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Brooks Development Co.</Typography>
         </Grid>
         <Grid item xs={12} sx={{ height: { xs: '90px', sm: '0px', md: '0px', lg: '0px' } }} />
