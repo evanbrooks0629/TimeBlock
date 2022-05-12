@@ -73,7 +73,7 @@ const Dashboard = () => {
         <Grid item xs={12} style={{height: "10px"}} />
         <DayBlock />
         <Grid item xs={12} align="center">
-          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.5 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
+          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.6 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Brooks Development Co.</Typography>
         </Grid>
         <Grid item xs={12} sx={{ height: { xs: '90px', sm: '0px', md: '0px', lg: '0px' } }} />
