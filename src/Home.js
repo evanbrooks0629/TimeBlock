@@ -106,7 +106,7 @@ const Home = () => {
             <Grid item xs={12} sm={8} md={5} lg={4}>
                 <Link 
                     style={{fontWeight: "bold", textTransform: "none", borderRadius: "25px", paddingLeft: "30px", paddingRight: "30px", color: "#ffffff", textDecoration: "none"}}
-                    to={"/dashboard"}>
+                    to={"/TimeBlock/dashboard"}>
                     Demo
                 </Link>
 
@@ -154,7 +154,7 @@ const Home = () => {
 
             <Grid item xs={1} sm={1} md={1} lg={2} />
             <Grid item xs={11} sm={11} md={11} lg={10} align="left">
-                <Button href="/dashboard" variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", paddingLeft: "30px", paddingRight: "30px"}}>Get Started</Button>
+                <Button href="/TimeBlock/dashboard" variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", paddingLeft: "30px", paddingRight: "30px"}}>Get Started</Button>
             </Grid>
             <Grid item xs={12} style={{height: "420px"}} />
             </Grid>

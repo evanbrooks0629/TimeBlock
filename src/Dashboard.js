@@ -70,7 +70,7 @@ const Dashboard = () => {
         <Grid item xs={4} sm={4} md={4} lg={4} align="right">
           <Button variant="contained" 
                   style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", marginLeft: "10px", borderRadius: "25px", marginRight: "10px"}}
-                  href="/" >
+                  href="/TimeBlock/" >
                   Home
           </Button>
         </Grid>
