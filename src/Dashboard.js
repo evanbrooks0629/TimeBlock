@@ -61,19 +61,19 @@ const Dashboard = () => {
     <div className="App">
       <Grid container spacing={3} align="right">
         <Grid item xs={12} style={{height: "30px"}} /> 
-        <Grid item xs={4} sm={4} md={4} lg={4} align="left">
+        <Grid item xs={3} sm={3} md={3} lg={3} align="left">
           <img src={logo} alt="logo" style={{width: "30px", marginLeft: "15px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
-        <Grid item xs={4} sm={4} md={4} lg={4} align="center">
-          <Typography align="right" variant="h6" style={{color: "#aaaaaa", marginLeft: "5px"}}><span style={{fontSize: "15px"}}>&#5130;&nbsp;&nbsp;{currDay}&nbsp;&nbsp;{currMonth}/{currDate}&nbsp;&nbsp;&#5125;</span></Typography>
+        <Grid item xs={6} sm={6} md={6} lg={6} align="center">
+          <Typography variant="h6" style={{color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>&#5130;&nbsp;&nbsp;{currDay}&nbsp;&nbsp;{currMonth}/{currDate}&nbsp;&nbsp;&#5125;</span></Typography>
         </Grid>
-        <Grid item xs={4} sm={4} md={4} lg={4} align="right">
-          <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "10px"}} href="/TimeBlock/" >Home</Button>
+        <Grid item xs={3} sm={3} md={3} lg={3} align="right">
+          <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "5px"}} href="/TimeBlock/" >Home</Button>
         </Grid>
         <Grid item xs={12} style={{height: "10px"}} />
         <DayBlock />
         <Grid item xs={12} align="center">
-          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.3 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
+          <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.5 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Brooks Development Co.</Typography>
         </Grid>
         <Grid item xs={12} sx={{ height: { xs: '90px', sm: '0px', md: '0px', lg: '0px' } }} />
