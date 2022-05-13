@@ -6,8 +6,8 @@ function App() {
  return (
     <Router>
        <Routes>
-            <Route path="/TimeBlock" element={<Home />} />
-            <Route path="/TimeBlock/dashboard" element={<Dashboard />} />
+            <Route path={`${process.env.PUBLIC_URL}/TimeBlock/`} element={<Home />} />
+            <Route path={`${process.env.PUBLIC_URL}/TimeBlock/Dashboard`} element={<Dashboard />} />
        </Routes>
     </Router>
  );
