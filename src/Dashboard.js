@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Grid, Typography, Button, IconButton } from '@mui/material';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import HomeIcon from '@mui/icons-material/Home';
 import './styles/App.css';
 import DayBlock from './components/DayBlock';
 import generateDays from './data/generateDays';
@@ -41,15 +42,14 @@ const Dashboard = () => {
 
   return (
     <div className="App">
-      <Grid container spacing={3} align="right">
-        <Grid item xs={12} /> 
+      <Grid container spacing={3} align="right" style={{marginTop: "-20px"}}>
         <Grid item xs={1} sm={2} md={2} lg={1} align="left">
-          <img src={logo} alt="logo" style={{width: "30px", marginLeft: "5px", marginRight: "5px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
+          <img src={logo} alt="logo" style={{width: "30px", marginRight: "5px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
-        <Grid item xs={8} sm={5} md={4} lg={4} align="center">
+        <Grid item xs={10} sm={5} md={4} lg={4} align="center">
           <Grid container>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ marginTop: "00px", cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getPrevDay} onClick={getPrevDay}>
+              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getPrevDay} onClick={getPrevDay}>
                 <ChevronLeftIcon />
               </IconButton>
             </Grid>
@@ -57,15 +57,18 @@ const Dashboard = () => {
               <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>&nbsp;&nbsp;{days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span></Typography>
             </Grid>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ marginTop: "0px", cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getNextDay} onClick={getNextDay}>
+              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getNextDay} onClick={getNextDay}>
                 <ChevronRightIcon />
               </IconButton>
             </Grid>
           </Grid>
           
         </Grid>
-        <Grid item xs={3} sm={5} md={6} lg={7} align="right">
-          <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "5px"}} href="/TimeBlock/" >Home</Button>
+        <Grid item xs={1} sm={5} md={6} lg={7} align="right">
+          <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF", marginLeft: "-50px", marginRight: "5px"}} href="/TimeBlock/" >
+              <HomeIcon />
+          </IconButton>
+          {/* <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginLeft: "-30px"}} href="/TimeBlock/" >Home</Button> */}
         </Grid>
         <Grid item xs={12} />
         <DayBlock dayIndex={dayIndex} />
