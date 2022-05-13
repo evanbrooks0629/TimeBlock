@@ -206,7 +206,7 @@ const DayBlock = (props) => {
             }
         }
         blocks[props.dayIndex] = newBlocks;
-        
+
         setBlocks([...blocks]);
         writeData([...blocks]);
         console.log(blocks);
@@ -228,11 +228,11 @@ const DayBlock = (props) => {
                         <Grid item xs={12} style={{marginTop: "-793px", position: "relative"}} className="offsetParent">
                             <div style={{height: '2px'}}></div>
                             {
-                            blocks[props.dayIndex].map(newBlock => (
+                            blocks.length > 0 ? blocks[props.dayIndex].map(newBlock => (
                                 <TimeBlock key={newBlock.key} id={newBlock.key} name={newBlock.name} hours={newBlock.hours} yPos={newBlock.yPos} 
                                            minutes={newBlock.minutes} duration={newBlock.duration} color={newBlock.color} completed={newBlock.completed}
                                            handleDelete={handleDelete} updateCoords={updateCoords} updateCompleted={updateCompleted} handleEdit={updateEdit} />    
-                            ))}
+                            )) : <></>}
                         </Grid>
                     </Grid>
                 </Grid>
