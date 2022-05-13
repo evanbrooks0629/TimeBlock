@@ -49,7 +49,7 @@ const Dashboard = () => {
         <Grid item xs={6} sm={4} md={3} lg={3} align="center">
           <Grid container>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ marginTop: "8px", cursor: 'pointer', color: "#eeeeee", height: "20px", width: "20px", backgroundColor: "#8C52FF"}} onTouchStart={getPrevDay} onClick={getPrevDay}>
+              <IconButton aria-label="delete" style={{ marginTop: "00px", cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getPrevDay} onClick={getPrevDay}>
                 <ChevronLeftIcon />
               </IconButton>
             </Grid>
@@ -57,7 +57,7 @@ const Dashboard = () => {
               <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>&nbsp;&nbsp;{days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span></Typography>
             </Grid>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ marginTop: "8px", cursor: 'pointer', color: "#eeeeee", height: "20px", width: "20px", backgroundColor: "#8C52FF"}} onTouchStart={getNextDay} onClick={getNextDay}>
+              <IconButton aria-label="delete" style={{ marginTop: "0px", cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getNextDay} onClick={getNextDay}>
                 <ChevronRightIcon />
               </IconButton>
             </Grid>
