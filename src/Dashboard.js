@@ -42,7 +42,7 @@ const Dashboard = () => {
 
   return (
     <div className="App">
-      <Grid container spacing={3} align="right" style={{marginTop: "-20px"}}>
+      <Grid container spacing={3} align="right" style={{marginTop: "0px"}}>
         <Grid item xs={1} sm={2} md={2} lg={1} align="left">
           <img src={logo} alt="logo" style={{width: "30px", marginRight: "5px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
