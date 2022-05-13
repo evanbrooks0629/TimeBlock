@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Typography, Grid, Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import TimeBlock from './TimeBlock';
@@ -14,7 +14,7 @@ import randomKey from '../data/generateKey';
 //import 'firebase/compat/auth';
 
 
-const DayBlock = () => {
+const DayBlock = (props) => {
 
     let times = GetTimes();
     let items = GetItems();
@@ -24,8 +24,8 @@ const DayBlock = () => {
     const [hrs, setHours] = useState(1);
     const [mins, setMinutes] = useState(0);
     const [color, setColor] = useState("#ff0000");
-    const [blocks, setBlocks] = useState(localStorage.getItem("blocks") ? JSON.parse(localStorage.getItem("blocks")) : []);
-    
+    const [blocks, setBlocks] = useState(localStorage.getItem("blocks") ? JSON.parse(localStorage.getItem("blocks")) : Array.from(Array(15), () => []));
+
     //region
     //const [blocks, setBlocks] = React.useState([]);
 
@@ -117,7 +117,6 @@ const DayBlock = () => {
             duration += 0.75;
         }
         const randKey = randomKey();
-
         const newBlock = {
             key: randKey,
             name: name,
@@ -128,9 +127,11 @@ const DayBlock = () => {
             yPos: 0,
             completed: false
         }
-        blocks.push(newBlock);
-        setBlocks(blocks);
-        writeData(blocks);
+        console.log(newBlock);
+        let allBlocks = blocks;
+        allBlocks[props.dayIndex].push(newBlock);
+        setBlocks([...allBlocks]);
+        writeData([...allBlocks]);
 
         // reset dialog states
         reset();
@@ -138,28 +139,32 @@ const DayBlock = () => {
 
     const updateCoords = (id, newYPos) => {
         let newBlocks = [];
-        for (let i = 0; i < blocks.length; i++) {
-            let newBlock = blocks[i];
+        for (let i = 0; i < blocks[props.dayIndex].length; i++) {
+            let newBlock = blocks[props.dayIndex][i];
             if (newBlock.key === id) {
                 newBlock.yPos = newYPos;
             }
             newBlocks.push(newBlock);
         }
-        setBlocks(newBlocks);
-        writeData(newBlocks);
+        let allBlocks = blocks;
+        allBlocks[props.TimeBlockdayIndex] = newBlocks;
+        setBlocks([...allBlocks]);
+        writeData([...allBlocks]);
     }
 
     const updateCompleted = (id, newCompleted) => {
         let newBlocks = [];
-        for (let i = 0; i < blocks.length; i++) {
-            let newBlock = blocks[i];
+        for (let i = 0; i < blocks[props.dayIndex].length; i++) {
+            let newBlock = blocks[props.dayIndex][i];
             if (newBlock.key === id) {
                 newBlock.completed = newCompleted;
             }
             newBlocks.push(newBlock);
         }
-        setBlocks(newBlocks);
-        writeData(newBlocks);
+        let allBlocks = blocks;
+        allBlocks[props.dayIndex] = newBlocks;
+        setBlocks([...allBlocks]);
+        writeData([...allBlocks]);
     }
 
     const updateEdit = (id, name, hrs, mins, color) => {
@@ -174,8 +179,8 @@ const DayBlock = () => {
             duration += 0.75;
         }
 
-        for (let i = 0; i < blocks.length; i++) {
-            let newBlock = blocks[i];
+        for (let i = 0; i < blocks[props.dayIndex].length; i++) {
+            let newBlock = blocks[props.dayIndex][i];
             if (newBlock.key === id) {
                 newBlock.name = name;
                 newBlock.hours = hrs;
@@ -185,14 +190,26 @@ const DayBlock = () => {
             }
             newBlocks.push(newBlock);
         }
-        setBlocks(newBlocks);
-        writeData(newBlocks);
+        let allBlocks = blocks;
+        allBlocks[props.dayIndex] = newBlocks;
+        setBlocks([...allBlocks]);
+        writeData([...allBlocks]);
+        console.log("edit");
     }
 
     const handleDelete = key => {
-        const newBlocks = blocks.filter(block => block.key !== key);
-        setBlocks(newBlocks);
-        writeData(newBlocks);
+        console.log(key);
+        let newBlocks = []
+        for (let block of blocks[props.dayIndex]) {
+            if (block.key !== key) {
+                newBlocks.push(block);
+            }
+        }
+        blocks[props.dayIndex] = newBlocks;
+        
+        setBlocks([...blocks]);
+        writeData([...blocks]);
+        console.log(blocks);
     }
 
     return (
@@ -211,7 +228,7 @@ const DayBlock = () => {
                         <Grid item xs={12} style={{marginTop: "-793px", position: "relative"}} className="offsetParent">
                             <div style={{height: '2px'}}></div>
                             {
-                            blocks.map(newBlock => (
+                            blocks[props.dayIndex].map(newBlock => (
                                 <TimeBlock key={newBlock.key} id={newBlock.key} name={newBlock.name} hours={newBlock.hours} yPos={newBlock.yPos} 
                                            minutes={newBlock.minutes} duration={newBlock.duration} color={newBlock.color} completed={newBlock.completed}
                                            handleDelete={handleDelete} updateCoords={updateCoords} updateCompleted={updateCompleted} handleEdit={updateEdit} />    

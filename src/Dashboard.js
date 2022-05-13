@@ -1,77 +1,74 @@
 import * as React from 'react';
-import { Grid, Typography, Button } from '@mui/material';
+import { Grid, Typography, Button, IconButton } from '@mui/material';
+import ChevronRightIcon from '@mui/icons-material/ChevronRight';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import './styles/App.css';
 import DayBlock from './components/DayBlock';
+import generateDays from './data/generateDays';
 import logo from './assets/tb-icon.png';
 
 const Dashboard = () => {
 
-  const [currDay, setWeekDay] = React.useState("");
-  const [currMonth, setMonth] = React.useState("");
-  const [currDate, setDate] = React.useState("");
+  const [days, setDays] = React.useState(generateDays(7,7));
+  const [dayIndex, setDayIndex] = React.useState(7);
   
   const refreshDate = () => {
-    const date = new Date();
-    let weekday = "";
-    let day = date.getDate().toString();
-
-    switch (date.getDay()) {
-      case 0:
-        weekday = "Sunday";
-        break;
-      case 1:
-        weekday = "Monday";
-        break;
-      case 2:
-        weekday = "Tuesday";
-        break;
-      case 3:
-        weekday = "Wednesday";
-        break;
-      case 4:
-        weekday = "Thursday";
-        break;
-      case 5:
-        weekday = "Friday";
-        break;
-      case 6:
-        weekday = "Saturday";
-        break;
-      default:
-        break;
-    }
-
-    setWeekDay(weekday);
-    setMonth(date.getMonth() + 1);
-    setDate(day);
+    const new_days = generateDays(7,7);
+    setDays(new_days);
   }
 
   React.useEffect(() => {
-    refreshDate();
+    const updateDate = setTimeout(() => {
+      console.log("use effect called");
+      refreshDate();
+    }, 10000);
+    return () => clearTimeout(updateDate);
   }, []);
 
-  React.useEffect(() => {
-    const interval = setInterval(() => refreshDate(), 1000);
-    return () => {
-        clearInterval(interval);
+  const getNextDay = () => {
+    refreshDate();
+    if (dayIndex < 14) {
+      setDayIndex(dayIndex + 1);
     }
-  }, []);
+  }
+
+  const getPrevDay = () => {
+    refreshDate();
+    if (dayIndex > 0) {
+      setDayIndex(dayIndex - 1);
+    }
+  }
 
   return (
     <div className="App">
       <Grid container spacing={3} align="right">
         <Grid item xs={12} /> 
-        <Grid item xs={3} sm={3} md={3} lg={3} align="left">
+        <Grid item xs={3} sm={3} md={3} lg={2} align="left">
           <img src={logo} alt="logo" style={{width: "30px", marginLeft: "15px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
-        <Grid item xs={6} sm={6} md={6} lg={6} align="center">
-          <Typography variant="h6" style={{color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>&#5130;&nbsp;&nbsp;{currDay}&nbsp;&nbsp;{currMonth}/{currDate}&nbsp;&nbsp;&#5125;</span></Typography>
+        <Grid item xs={6} sm={4} md={3} lg={3} align="center">
+          <Grid container>
+            <Grid item xs={3}>
+              <IconButton aria-label="delete" style={{ marginTop: "8px", cursor: 'pointer', color: "#eeeeee", height: "20px", width: "20px", backgroundColor: "#8C52FF"}} onTouchStart={getPrevDay} onClick={getPrevDay}>
+                <ChevronLeftIcon />
+              </IconButton>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>&nbsp;&nbsp;{days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span></Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <IconButton aria-label="delete" style={{ marginTop: "8px", cursor: 'pointer', color: "#eeeeee", height: "20px", width: "20px", backgroundColor: "#8C52FF"}} onTouchStart={getNextDay} onClick={getNextDay}>
+                <ChevronRightIcon />
+              </IconButton>
+            </Grid>
+          </Grid>
+          
         </Grid>
-        <Grid item xs={3} sm={3} md={3} lg={3} align="right">
+        <Grid item xs={3} sm={5} md={6} lg={7} align="right">
           <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginRight: "5px"}} href="/TimeBlock/" >Home</Button>
         </Grid>
         <Grid item xs={12} />
-        <DayBlock />
+        <DayBlock dayIndex={dayIndex} />
         <Grid item xs={12} align="center">
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Version 1.1.6 &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</Typography>
           <Typography align="center" variant="h7" style={{color: "#aaaaaa"}}>Brooks Development Co.</Typography>
