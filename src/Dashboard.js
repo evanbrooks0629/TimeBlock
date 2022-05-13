@@ -12,6 +12,9 @@ const Dashboard = () => {
 
   const [days, setDays] = React.useState(generateDays(7,7));
   const [dayIndex, setDayIndex] = React.useState(7);
+
+  const [prevDisabled, setPrevDisabled] = React.useState(false);
+  const [nextDisabled, setNextDisabled] = React.useState(false);
   
   const refreshDate = () => {
     const new_days = generateDays(7,7);
@@ -20,13 +23,15 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     const updateDate = setTimeout(() => {
-      console.log("use effect called");
       refreshDate();
-    }, 10000);
+      setNextDisabled(false);
+      setPrevDisabled(false);
+    }, 600);
     return () => clearTimeout(updateDate);
-  }, []);
+  }, [prevDisabled, nextDisabled]);
 
   const getNextDay = () => {
+    setNextDisabled(true);
     refreshDate();
     if (dayIndex < 14) {
       setDayIndex(dayIndex + 1);
@@ -34,6 +39,7 @@ const Dashboard = () => {
   }
 
   const getPrevDay = () => {
+    setPrevDisabled(true);
     refreshDate();
     if (dayIndex > 0) {
       setDayIndex(dayIndex - 1);
@@ -49,7 +55,7 @@ const Dashboard = () => {
         <Grid item xs={10} sm={5} md={4} lg={4} align="center">
           <Grid container>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getPrevDay} onClick={getPrevDay}>
+              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} disabled={prevDisabled} onTouchStart={getPrevDay} onClick={getPrevDay}>
                 <ChevronLeftIcon />
               </IconButton>
             </Grid>
@@ -57,7 +63,7 @@ const Dashboard = () => {
               <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>&nbsp;&nbsp;{days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span></Typography>
             </Grid>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getNextDay} onClick={getNextDay}>
+              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} disabled={nextDisabled} onTouchStart={getNextDay} onClick={getNextDay}>
                 <ChevronRightIcon />
               </IconButton>
             </Grid>
