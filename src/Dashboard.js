@@ -43,10 +43,10 @@ const Dashboard = () => {
     <div className="App">
       <Grid container spacing={3} align="right">
         <Grid item xs={12} /> 
-        <Grid item xs={2} sm={2} md={2} lg={1} align="left">
+        <Grid item xs={1} sm={2} md={2} lg={1} align="left">
           <img src={logo} alt="logo" style={{width: "30px", marginLeft: "15px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
-        <Grid item xs={7} sm={5} md={4} lg={4} align="center">
+        <Grid item xs={8} sm={5} md={4} lg={4} align="center">
           <Grid container>
             <Grid item xs={3}>
               <IconButton aria-label="delete" style={{ marginTop: "00px", cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} onTouchStart={getPrevDay} onClick={getPrevDay}>
