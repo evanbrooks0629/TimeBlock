@@ -26,7 +26,6 @@ const Dashboard = () => {
 
   React.useEffect(() => {
     const updateDate = setTimeout(() => {
-      refreshDate();
       if (dayIndex === 0) {
         setPrevDisabled(true);
         setColorPrev("#5630a1");
@@ -44,6 +43,13 @@ const Dashboard = () => {
     }, 500);
     return () => clearTimeout(updateDate);
   }, [prevDisabled, nextDisabled, colorPrev, colorNext, dayIndex]);
+
+  React.useEffect(() => {
+    const updateDate = setTimeout(() => {
+      refreshDate();
+    }, 1000);
+    return () => clearTimeout(updateDate);
+  });
 
   const getNextDay = () => {
     setNextDisabled(true);
