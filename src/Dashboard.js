@@ -41,7 +41,7 @@ const Dashboard = () => {
         setNextDisabled(false);
         setColorNext("#8C52FF");
       }
-    }, 100);
+    }, 200);
     return () => clearTimeout(updateDate);
   }, [prevDisabled, nextDisabled, colorPrev, colorNext, dayIndex]);
 
