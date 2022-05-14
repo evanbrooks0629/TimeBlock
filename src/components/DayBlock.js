@@ -25,50 +25,22 @@ const DayBlock = (props) => {
     const [mins, setMinutes] = useState(0);
     const [color, setColor] = useState("#ff0000");
     const [blocks, setBlocks] = useState(localStorage.getItem("blocks") ? JSON.parse(localStorage.getItem("blocks")) : Array.from(Array(15), () => []));
+    const [currDay, setCurrDay] = useState(new Date().getDate());
 
-    //region
-    //const [blocks, setBlocks] = React.useState([]);
-
-    //const username = "user1";
-    //const password = "12345";
-
-    // firebase.initializeApp(firebaseConfig());
-    // const ref = firebase.firestore().collection("users");
-
-    // include getBlocks() when firebase is fully complete
-    // const getBlocks = () => {
-    //     let users = []
-    //     ref.onSnapshot((querySnapshot) => {
-    //         querySnapshot.forEach((doc) => {
-    //             users.push(doc.data())
-    //         });
-
-    //         const currentDay = 0;
-        
-    //         for (let user of users) {
-    //             if (username === user.username) {
-    //                 if (password === user.password) {
-    //                     console.log("Welcome,", user.firstName);
-    //                     const day = user.data[currentDay]
-
-    //                     console.log("DAY ", currentDay);
-    //                     console.log("BLOCKS");
-    //                     setBlocks(day.blocks)
-    //                     for (let block of day.blocks) {
-    //                         console.log(block);
-    //                     }
-    //                 } else {
-    //                     console.log("Incorrect password.");
-    //                 }
-    //             }               
-    //         }
-    //     });
-    // }
-
-    // React.useEffect(() => {
-    //     getBlocks();
-    // });
-    //endregion
+    React.useEffect(() => {
+        const updateDate = setTimeout(() => {
+            const checkDate = new Date().getDate();
+            // move data 1 day forward
+            if (currDay !== checkDate) {
+                setCurrDay(checkDate);
+                blocks.shift();
+                blocks.push([]);
+                setBlocks([...blocks]);
+                writeData([...blocks]);
+            }
+        }, 1000);
+        return () => clearTimeout(updateDate);
+    });
 
     const writeData = newBlocks => {
         localStorage.setItem("blocks", JSON.stringify(newBlocks));

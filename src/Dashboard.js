@@ -15,6 +15,9 @@ const Dashboard = () => {
 
   const [prevDisabled, setPrevDisabled] = React.useState(false);
   const [nextDisabled, setNextDisabled] = React.useState(false);
+
+  const [colorPrev, setColorPrev] = React.useState("#8C52FF");
+  const [colorNext, setColorNext] = React.useState("#8C52FF");
   
   const refreshDate = () => {
     const new_days = generateDays(7,7);
@@ -24,11 +27,23 @@ const Dashboard = () => {
   React.useEffect(() => {
     const updateDate = setTimeout(() => {
       refreshDate();
-      setNextDisabled(false);
-      setPrevDisabled(false);
-    }, 600);
+      if (dayIndex === 0) {
+        setPrevDisabled(true);
+        setColorPrev("#5630a1");
+      } else {
+        setPrevDisabled(false);
+        setColorPrev("#8C52FF");
+      }
+      if (dayIndex === 14) {
+        setNextDisabled(true);
+        setColorNext("#5630a1");
+      } else {
+        setNextDisabled(false);
+        setColorNext("#8C52FF");
+      }
+    }, 100);
     return () => clearTimeout(updateDate);
-  }, [prevDisabled, nextDisabled]);
+  }, [prevDisabled, nextDisabled, colorPrev, colorNext, dayIndex]);
 
   const getNextDay = () => {
     setNextDisabled(true);
@@ -55,15 +70,18 @@ const Dashboard = () => {
         <Grid item xs={10} sm={5} md={4} lg={4} align="center">
           <Grid container>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} disabled={prevDisabled} onTouchStart={getPrevDay} onClick={getPrevDay}>
+              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: colorPrev}} disabled={prevDisabled} onTouchStart={getPrevDay} onClick={getPrevDay}>
                 <ChevronLeftIcon />
               </IconButton>
             </Grid>
             <Grid item xs={6}>
-              <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>&nbsp;&nbsp;{days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span></Typography>
+              <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>
+                &nbsp;&nbsp;{days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span>
+                <span style={{color: "#eeeeee", fontWeight: "bold", fontSize: "14px"}}>{ dayIndex === 7 ? "(Today)" : "" }</span>
+              </Typography>
             </Grid>
             <Grid item xs={3}>
-              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF"}} disabled={nextDisabled} onTouchStart={getNextDay} onClick={getNextDay}>
+              <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: colorNext}} disabled={nextDisabled} onTouchStart={getNextDay} onClick={getNextDay}>
                 <ChevronRightIcon />
               </IconButton>
             </Grid>
