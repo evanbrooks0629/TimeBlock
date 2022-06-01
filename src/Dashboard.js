@@ -73,20 +73,20 @@ const Dashboard = () => {
         <Grid item xs={1} sm={2} md={2} lg={1} align="left">
           <img src={logo} alt="logo" style={{width: "30px", marginRight: "5px", boxShadow: "0px 0px 12px 10px rgba(0,0,0,0.97)"}} />
         </Grid>
-        <Grid item xs={10} sm={5} md={4} lg={4} align="center">
+        <Grid item xs={10} sm={8} md={4} lg={4} align="center">
           <Grid container>
-            <Grid item xs={3}>
+            <Grid item xs={3} sm={3} md={2} lg={2}>
               <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: colorPrev}} disabled={prevDisabled} onTouchStart={getPrevDay} onClick={getPrevDay}>
                 <ChevronLeftIcon />
               </IconButton>
             </Grid>
-            <Grid item xs={6}>
-              <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "15px"}}>
-                &nbsp;&nbsp;{days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span>
+            <Grid item xs={6} sm={6} md={8} lg={8}>
+              <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "14px"}}>
+                {days[dayIndex].label ? days[dayIndex+1].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span>
                 <span style={{color: "#eeeeee", fontWeight: "bold", fontSize: "14px"}}>{ dayIndex === 7 ? "(Today)" : "" }</span>
               </Typography>
             </Grid>
-            <Grid item xs={3}>
+            <Grid item xs={3} sm={3} md={2} lg={2}>
               <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: colorNext}} disabled={nextDisabled} onTouchStart={getNextDay} onClick={getNextDay}>
                 <ChevronRightIcon />
               </IconButton>
@@ -94,7 +94,7 @@ const Dashboard = () => {
           </Grid>
           
         </Grid>
-        <Grid item xs={1} sm={5} md={6} lg={7} align="right">
+        <Grid item xs={1} sm={2} md={6} lg={7} align="right">
           <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF", marginLeft: "-50px", marginRight: "5px"}} href="/TimeBlock/" >
               <HomeIcon />
           </IconButton>

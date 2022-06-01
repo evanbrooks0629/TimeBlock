@@ -28,6 +28,8 @@ const DayBlock = (props) => {
     const [currDay, setCurrDay] = useState(new Date().getDate());
 
     React.useEffect(() => {
+        // use local storage to keep track of the last day,
+        // then use Date.getDate()-i --> i is number of shifts
         const updateDate = setTimeout(() => {
             const checkDate = new Date().getDate();
             // move data 1 day forward
