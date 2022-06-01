@@ -82,7 +82,7 @@ const Dashboard = () => {
             </Grid>
             <Grid item xs={6} sm={6} md={8} lg={8}>
               <Typography variant="h6" style={{ color: "#aaaaaa"}}><span style={{fontSize: "14px"}}>
-                {days[dayIndex].label ? days[dayIndex+1].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span>
+                {days[dayIndex].label ? days[dayIndex].label : ""}&nbsp;&nbsp;{days[dayIndex].month ? days[dayIndex].month : ""}/{days[dayIndex].date ? days[dayIndex].date : ""}&nbsp;&nbsp;</span>
                 <span style={{color: "#eeeeee", fontWeight: "bold", fontSize: "14px"}}>{ dayIndex === 7 ? "(Today)" : "" }</span>
               </Typography>
             </Grid>
