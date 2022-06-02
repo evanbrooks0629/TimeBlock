@@ -98,7 +98,6 @@ const Dashboard = () => {
           <IconButton aria-label="delete" style={{ cursor: 'pointer', color: "#eeeeee", height: "35px", width: "35px", backgroundColor: "#8C52FF", marginLeft: "-50px", marginRight: "5px"}} href="/TimeBlock/" >
               <HomeIcon />
           </IconButton>
-          {/* <Button variant="contained" style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", borderRadius: "25px", marginLeft: "-30px"}} href="/TimeBlock/" >Home</Button> */}
         </Grid>
         <Grid item xs={12} />
         <DayBlock dayIndex={dayIndex} />

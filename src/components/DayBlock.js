@@ -218,17 +218,17 @@ const DayBlock = (props) => {
             // area to create events
           }
           <Grid container spacing={0}>
-              <Grid item xs={12} sx={{ height: { xs: '0px', sm: '10px', md: '260px', lg: '260px' } }} />
-              <Grid item xs={12} sx={{ display: { xs: 'none', sm: 'block', md: 'block', lg: 'block' } }}>
+              <Grid item xs={12} sx={{ height: { xs: '0px', sm: '0px', md: '260px', lg: '260px' } }} />
+              <Grid item xs={12} sx={{ display: { xs: 'none', sm: 'none', md: 'block', lg: 'block' } }}>
                 <Typography align="center" variant="h6" style={{color: "#eeeeee"}}>Add blocks to build your day</Typography>
               </Grid>
-              <Grid item xs={12} sx={{ height: { xs: '0px', sm: '50px', md: '50px', lg: '50px' } }} />
+              <Grid item xs={12} sx={{ height: { xs: '0px', sm: '0px', md: '50px', lg: '50px' } }} />
               <Grid item xs={3} sm={3} md={1} lg={3} />
               <Grid item xs={6} sm={6} md={10} lg={6} align="center">
                     <Button 
                         variant="contained" 
                         endIcon={<AddIcon />} 
-                        sx={{ position: {xs: 'fixed', sm: 'static', md: 'static', lg: 'static'}, bottom: {xs:'20px'}, left: {xs:'10%'}, width: {xs: '80%'}}}
+                        sx={{ position: {xs: 'fixed', sm: 'fixed', md: 'static', lg: 'static'}, bottom: {xs:'20px'}, left: {xs:'10%', sm: '20%'}, width: {xs: '80%', sm: '60%', md: '80%', lg: '80%'}}}
                         style={{backgroundColor: "#eeeeee", color: "black", height: "50px", textTransform: "none", fontWeight: "bold"}} 
                         fullWidth
                         onClick={handleClickOpen}>

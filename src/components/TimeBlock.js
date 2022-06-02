@@ -12,6 +12,15 @@ function TimeBlock(props) {
     let lineHeight = height - 2;
     const lineHeightPixels = String(lineHeight) + "px";
 
+    let marginTop = "0px";
+    if (props.duration === 0.25) {
+        marginTop = "-16px";
+    } else if (props.duration === 0.5) {
+        marginTop = "-11px";
+    } else if (props.duration === 0.75) {
+        marginTop = "-5px";
+    } 
+
     const [open, setOpen] = React.useState(false);
     const [name, setName] = React.useState(props.name);
     const [hrs, setHours] = React.useState(props.hours);
@@ -112,17 +121,17 @@ function TimeBlock(props) {
                     <Typography variant="h7" style={{color: "white", fontSize: "0.7em"}}>{props.duration} {props.duration > 1 ? "hrs" : "hr"}</Typography>
                 </Grid>
                 <Grid item xs={4} sm={4} md={4} lg={4} align="right" style={{lineHeight: lineHeightPixels}}>
-                    <IconButton aria-label="delete" style={{paddingRight: "0px", cursor: 'pointer', color: "white", height: "20px"}} onTouchStart={handleClickOpen} onClick={handleClickOpen}>
+                    <IconButton aria-label="delete" style={{paddingRight: "0px", cursor: 'pointer', color: "white", height: "20px", marginTop: marginTop}} onTouchStart={handleClickOpen} onClick={handleClickOpen}>
                         <ModeEditIcon />
                     </IconButton>
                     
                     <EditDialog open={open} handleClose={handleClose} name={name} setName={handleChangeName} mins={mins} setMins={handleChangeMinutes} hrs={hrs} setHrs={handleChangeHours} color={color} setColor={handleChangeColor} editBlock={handleEdit}/>
 
-                    <IconButton aria-label="delete" style={{paddingRight: "0px", cursor: 'pointer', color: "white", height: "20px"}} onTouchStart={handleDelete} onClick={handleDelete}>
+                    <IconButton aria-label="delete" style={{paddingRight: "0px", cursor: 'pointer', color: "white", height: "20px", marginTop: marginTop}} onTouchStart={handleDelete} onClick={handleDelete}>
                         <DeleteIcon />
                     </IconButton>
                     
-                    <Checkbox checked={completed ? true : false} onChange={onCheckboxChange} onTouchStart={onCheckboxChange} style={{color: "#ffffff", paddingLeft: "5px"}} />
+                    <Checkbox checked={completed ? true : false} onChange={onCheckboxChange} onTouchStart={onCheckboxChange} style={{color: "#ffffff", paddingLeft: "5px", marginTop: marginTop}} />
                 </Grid>
             </Grid>
         </Draggable>
