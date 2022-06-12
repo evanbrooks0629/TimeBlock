@@ -7,11 +7,6 @@ import Directions from './Directions';
 import GetTimes from '../data/GetTimes';
 import GetItems from '../data/GetItems';
 import randomKey from '../data/generateKey';
-// import firebaseConfig from '../fb/fbConfig';
-
-//import  firebase from 'firebase/compat/app';
-//import 'firebase/compat/firestore';
-//import 'firebase/compat/auth';
 
 
 const DayBlock = (props) => {
@@ -25,27 +20,46 @@ const DayBlock = (props) => {
     const [mins, setMinutes] = useState(0);
     const [color, setColor] = useState("#ff0000");
     const [blocks, setBlocks] = useState(localStorage.getItem("blocks") ? JSON.parse(localStorage.getItem("blocks")) : Array.from(Array(15), () => []));
-    const [currDay, setCurrDay] = useState(new Date().getDate());
+    const [currDay, setCurrDay] = useState(localStorage.getItem("date") ? JSON.parse(localStorage.getItem("date")) : new Date().getDate());
+
 
     React.useEffect(() => {
-        // use local storage to keep track of the last day,
-        // then use Date.getDate()-i --> i is number of shifts
         const updateDate = setTimeout(() => {
-            const checkDate = new Date().getDate();
-            // move data 1 day forward
-            if (currDay !== checkDate) {
-                setCurrDay(checkDate);
-                blocks.shift();
-                blocks.push([]);
+            const checkDate = new Date();
+
+            if (currDay !== checkDate.getDate()) {
+                // find out how many days have passed
+                let i = 0;
+                while (currDay !== checkDate.getDate()) {
+                    checkDate.setDate(checkDate.getDate()-1);
+                    i++;
+                }
+                console.log(i);
+                for (let j = 0; j < i; j++) {
+                    blocks.shift();
+                    blocks.push([]);
+                }
+
+                const newDate = new Date();
+                newDate.setDate(newDate.getDate());
+
+                setCurrDay(newDate.getDate());
+                writeDate(newDate.getDate());
+
                 setBlocks([...blocks]);
-                writeData([...blocks]);
-            }
+                writeBlocks([...blocks]);
+            } 
+
         }, 1000);
         return () => clearTimeout(updateDate);
     });
 
-    const writeData = newBlocks => {
+    const writeBlocks = newBlocks => {
         localStorage.setItem("blocks", JSON.stringify(newBlocks));
+    }
+
+    const writeDate = newDate => {
+        localStorage.setItem("date", JSON.stringify(newDate));
     }
 
     const reset = () => {
@@ -101,11 +115,10 @@ const DayBlock = (props) => {
             yPos: 0,
             completed: false
         }
-        console.log(newBlock);
         let allBlocks = blocks;
         allBlocks[props.dayIndex].push(newBlock);
         setBlocks([...allBlocks]);
-        writeData([...allBlocks]);
+        writeBlocks([...allBlocks]);
 
         // reset dialog states
         reset();
@@ -123,7 +136,7 @@ const DayBlock = (props) => {
         let allBlocks = blocks;
         allBlocks[props.TimeBlockdayIndex] = newBlocks;
         setBlocks([...allBlocks]);
-        writeData([...allBlocks]);
+        writeBlocks([...allBlocks]);
     }
 
     const updateCompleted = (id, newCompleted) => {
@@ -138,7 +151,7 @@ const DayBlock = (props) => {
         let allBlocks = blocks;
         allBlocks[props.dayIndex] = newBlocks;
         setBlocks([...allBlocks]);
-        writeData([...allBlocks]);
+        writeBlocks([...allBlocks]);
     }
 
     const updateEdit = (id, name, hrs, mins, color) => {
@@ -167,12 +180,10 @@ const DayBlock = (props) => {
         let allBlocks = blocks;
         allBlocks[props.dayIndex] = newBlocks;
         setBlocks([...allBlocks]);
-        writeData([...allBlocks]);
-        console.log("edit");
+        writeBlocks([...allBlocks]);
     }
 
     const handleDelete = key => {
-        console.log(key);
         let newBlocks = []
         for (let block of blocks[props.dayIndex]) {
             if (block.key !== key) {
@@ -182,8 +193,7 @@ const DayBlock = (props) => {
         blocks[props.dayIndex] = newBlocks;
 
         setBlocks([...blocks]);
-        writeData([...blocks]);
-        console.log(blocks);
+        writeBlocks([...blocks]);
     }
 
     return (
