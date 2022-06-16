@@ -66,7 +66,7 @@ const DayBlock = (props) => {
         setName("");
         setHours(1);
         setMinutes(0);
-        setColor("#ff0000");
+        setColor("#da5151");
     }
 
     const handleClickOpen = () => {
