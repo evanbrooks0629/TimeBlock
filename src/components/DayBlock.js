@@ -18,7 +18,7 @@ const DayBlock = (props) => {
     const [name, setName] = useState("");
     const [hrs, setHours] = useState(1);
     const [mins, setMinutes] = useState(0);
-    const [color, setColor] = useState("#ff0000");
+    const [color, setColor] = useState("#da5151");
     const [blocks, setBlocks] = useState(localStorage.getItem("blocks") ? JSON.parse(localStorage.getItem("blocks")) : Array.from(Array(15), () => []));
     const [currDay, setCurrDay] = useState(localStorage.getItem("date") ? JSON.parse(localStorage.getItem("date")) : new Date().getDate());
 
@@ -34,7 +34,7 @@ const DayBlock = (props) => {
                     checkDate.setDate(checkDate.getDate()-1);
                     i++;
                 }
-                console.log(i);
+                
                 for (let j = 0; j < i; j++) {
                     blocks.shift();
                     blocks.push([]);

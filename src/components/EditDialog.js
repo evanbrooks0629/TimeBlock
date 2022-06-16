@@ -7,6 +7,18 @@ const EditDialog = (props) => {
     const hoursInputs = Times.hoursInputs;
     const minutesInputs = Times.minutesInputs;
 
+    const palette = {
+        red: '#da5151',
+        orange: '#ff7700',
+        yellow: '#f5b216',
+        green: '#1edb8b',
+        lightblue: '#16b6f5',
+        blue: '#006fff',
+        darkblue: 'darkblue',
+        purple: '#7b00ff',
+        pink: '#F200FF',
+    };
+
     return (
         <Dialog open={props.open} onClose={props.handleClose}>
             <DialogTitle style={{ color: "#8C52FF" }}>Edit Block</DialogTitle>
@@ -122,7 +134,7 @@ const EditDialog = (props) => {
                         </DialogContentText>
                     </Grid>
                     <Grid item xs={10}>
-                        <ColorPicker value={props.color} onChange={props.setColor} />
+                        <ColorPicker value={props.color} onChange={props.setColor} palette={palette} />
                     </Grid>
                 </Grid>
             </DialogContent>
