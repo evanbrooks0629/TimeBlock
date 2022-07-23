@@ -1,99 +1,99 @@
-import { useState } from 'react';
-import { Typography, Grid, Button } from '@mui/material';
+// import { useState } from 'react';
+import { Typography, Grid } from '@mui/material';
 import './styles/App.css';
 import logo from './assets/TimeBlock.png';
-import showcase from './assets/showcase.png';
+import showcase from './assets/showcase (1).png';
 import InfoCard from './components/InfoCard';
-import LoginDialog from './components/LoginDialog';
-import SignupDialog from './components/SignupDialog';
+// import LoginDialog from './components/LoginDialog';
+// import SignupDialog from './components/SignupDialog';
 import { Link } from "react-router-dom";
 
 const Home = () => {
     // const [loggedIn, setLoggedIn] = React.useState(localStorage.getItem("loggedIn") ? JSON.parse(localStorage.getItem("loggedIn")) : false);
     // const [loggedIn, setLoggedIn] = React.useState(false);
     // const [user, setUser] = React.useState(null);
-    const [loginOpen, setLoginOpen] = useState(false);
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
+    // const [loginOpen, setLoginOpen] = useState(false);
+    // const [username, setUsername] = useState("");
+    // const [password, setPassword] = useState("");
     
-    const [signupOpen, setSignupOpen] = useState(false);
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [newUsername, setNewUsername] = useState("");
-    const [newPassword, setNewPassword] = useState("");
-    const [confirmPassword, setConfirmPassword] = useState("");
+    // const [signupOpen, setSignupOpen] = useState(false);
+    // const [firstName, setFirstName] = useState("");
+    // const [lastName, setLastName] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [newUsername, setNewUsername] = useState("");
+    // const [newPassword, setNewPassword] = useState("");
+    // const [confirmPassword, setConfirmPassword] = useState("");
     
-    const handleLoginOpen = () => {
-        setLoginOpen(true);
-    }
+    // const handleLoginOpen = () => {
+    //     setLoginOpen(true);
+    // }
 
-    const handleLoginClose = () => {
-        setLoginOpen(false);
-    }
+    // const handleLoginClose = () => {
+    //     setLoginOpen(false);
+    // }
 
-    const handleChangeUsername = e => {
-        setUsername(e.target.value);
-    }
+    // const handleChangeUsername = e => {
+    //     setUsername(e.target.value);
+    // }
 
-    const handleChangePassword = e => {
-        setPassword(e.target.value);
-    }
+    // const handleChangePassword = e => {
+    //     setPassword(e.target.value);
+    // }
 
-    const loginUser = () => {
-        setLoginOpen(false);
-        console.log(username, password);
-        // login to firebase and check if user exists
-        // if so, redirect to dashboard with user's data
-        setUsername("");
-        setPassword("");
-    }
+    // const loginUser = () => {
+    //     setLoginOpen(false);
+    //     console.log(username, password);
+    //     // login to firebase and check if user exists
+    //     // if so, redirect to dashboard with user's data
+    //     setUsername("");
+    //     setPassword("");
+    // }
 
-    const handleSignupOpen = () => {
-        // open pop up, use firebase to create new user
-        setSignupOpen(true);
-    }
+    // const handleSignupOpen = () => {
+    //     // open pop up, use firebase to create new user
+    //     setSignupOpen(true);
+    // }
 
-    const handleSignupClose = () => {
-        setSignupOpen(false);
-    }
+    // const handleSignupClose = () => {
+    //     setSignupOpen(false);
+    // }
 
-    const handleChangeFirstName = e => {
-        setFirstName(e.target.value);
-    }
+    // const handleChangeFirstName = e => {
+    //     setFirstName(e.target.value);
+    // }
 
-    const handleChangeLastName = e => {
-        setLastName(e.target.value);
-    }
+    // const handleChangeLastName = e => {
+    //     setLastName(e.target.value);
+    // }
 
-    const handleChangeEmail = e => {
-        setEmail(e.target.value);
-    }
+    // const handleChangeEmail = e => {
+    //     setEmail(e.target.value);
+    // }
 
-    const handleChangeNewUsername = e => {
-        setNewUsername(e.target.value);
-    }
+    // const handleChangeNewUsername = e => {
+    //     setNewUsername(e.target.value);
+    // }
 
-    const handleChangeNewPassword = e => {
-        setNewPassword(e.target.value);
-    }
+    // const handleChangeNewPassword = e => {
+    //     setNewPassword(e.target.value);
+    // }
 
-    const handleChangeConfirmPassword = e => {
-        setConfirmPassword(e.target.value);
-    }
+    // const handleChangeConfirmPassword = e => {
+    //     setConfirmPassword(e.target.value);
+    // }
 
-    const createNewUser = () => {
-        if (newPassword === confirmPassword) {
-            console.log(firstName, lastName, email, newUsername, newPassword);
-            setSignupOpen(false);
-            setFirstName("");
-            setLastName("");
-            setEmail("");
-            setNewUsername("");
-            setNewPassword("");
-            setConfirmPassword("");
-        }
-    }
+    // const createNewUser = () => {
+    //     if (newPassword === confirmPassword) {
+    //         console.log(firstName, lastName, email, newUsername, newPassword);
+    //         setSignupOpen(false);
+    //         setFirstName("");
+    //         setLastName("");
+    //         setEmail("");
+    //         setNewUsername("");
+    //         setNewPassword("");
+    //         setConfirmPassword("");
+    //     }
+    // }
 
     return (
         <div className="App">
@@ -104,13 +104,14 @@ const Home = () => {
             </Grid>
             <Grid item xs={12} sm={1} md={5} lg={6} />
             <Grid item xs={12} sm={8} md={5} lg={4}>
-                <Link 
+                {/* <Link 
                     style={{fontWeight: "bold", textTransform: "none", borderRadius: "25px", paddingLeft: "30px", paddingRight: "30px", color: "#ffffff", textDecoration: "none"}}
                     to={"/TimeBlock/dashboard"}>
                     Demo
-                </Link>
+                </Link> */}
 
-                {/* LOGIN */}
+                
+                {/* LOGIN
                 <Button 
                     variant="contained" 
                     style={{backgroundColor: "#8C52FF", fontWeight: "bold", textTransform: "none", marginLeft: "10px", borderRadius: "25px", paddingLeft: "30px", paddingRight: "30px"}}
@@ -120,7 +121,7 @@ const Home = () => {
                 </Button>
                 <LoginDialog open={loginOpen} handleOpen={handleLoginOpen} handleClose={handleLoginClose} username={username} setUsername={handleChangeUsername} password={password} setPassword={handleChangePassword} handleLogin={loginUser} />
 
-                {/* SIGNUP */}
+                {/* SIGNUP 
                 <Button 
                     variant="outlined" 
                     style={{borderColor: "#8C52FF", color: "#8C52FF", marginLeft: "10px", fontWeight: "bold", textTransform: "none", borderRadius: "25px", paddingLeft: "30px", paddingRight: "30px"}}
@@ -131,6 +132,9 @@ const Home = () => {
                 <SignupDialog open={signupOpen} handleOpen={handleSignupOpen} handleClose={handleSignupClose} firstName={firstName} setFirstName={handleChangeFirstName} lastName={lastName} setLastName={handleChangeLastName} email={email} setEmail={handleChangeEmail} 
                               newUsername={newUsername} setNewUsername={handleChangeNewUsername} newPassword={newPassword} setNewPassword={handleChangeNewPassword} confirmPassword={confirmPassword} setConfirmPassword={handleChangeConfirmPassword} handleSignup={createNewUser} />
 
+                */}
+                
+                
             </Grid>
 
             <Grid item xs={12} stlye={{height: "10px"}} />
