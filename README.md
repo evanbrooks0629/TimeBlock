@@ -37,7 +37,7 @@ A pop-up window will be displayed to allow you to input your event. You can cust
 
 ![image](https://user-images.githubusercontent.com/60624108/189542877-5ed94124-0752-4e96-9599-c6b77e703eca.png)
 
-Once you click "Add Block", the new block will be displyed at the top of your day. To put it at a certain time, simply drag vertically.
+Once you click "Add Block", the new block will be displayed at the top of your day. To put it at a certain time, simply drag vertically.
 
 ![image](https://user-images.githubusercontent.com/60624108/189543058-43c18fe2-6996-467f-936b-9d0cf0917fff.png)
 
